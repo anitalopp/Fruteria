@@ -11,9 +11,7 @@ const cantidades = {
     pawpaw: 0,
 };
 
-var dineroGastado = 0;
-
-var precios = {
+const precios = {
     pitahaya: 9.15,
     chirimoya: 8.60,
     longan: 7.42,
@@ -26,58 +24,65 @@ var precios = {
     pawpaw: 10.66,
 };
 
+let dineroGastado = 0;
 
-document.getElementById("pitahaya").onclick = function() {
-    añadirFruta("pitahaya");
-    mostrarResumenCompra();
-};
+function añadirFruta(fruta) {
+    if (cantidades[fruta] !== undefined) {
+        cantidades[fruta] += 1; 
+        dineroGastado += precios[fruta]; 
+    }
+}
 
-document.getElementById("chirimoya").onclick = function() {
-    añadirFruta("chirimoya");
-    mostrarResumenCompra();
-};
+function mostrarResumen() {
+    const resumenDetalles = document.getElementById("detallesCompra");
+    const totalPrecioElement = document.getElementById("precioTotal");
+    const precioMedioElement = document.getElementById("precioMedio");
 
-document.getElementById("longan").onclick = function() {
-    añadirFruta("longan");
-    mostrarResumenCompra();
-};
+    resumenDetalles.textContent = "";
+    totalPrecioElement.textContent = "";
+    precioMedioElement.textContent = "";
 
-document.getElementById("carambola").onclick = function() {
-    añadirFruta("carambola");
-    mostrarResumenCompra();
-};
+    let totalKilos = 0; 
+    let totalGastado = dineroGastado; 
 
-document.getElementById("kiwano").onclick = function() {
-    añadirFruta("kiwano");
-    mostrarResumenCompra();
-};
+    const frutasOrdenadas = Object.keys(cantidades).sort().reverse();    
 
-document.getElementById("maracuya").onclick = function() {
-    añadirFruta("maracuya");
-    mostrarResumenCompra();
-};
+    frutasOrdenadas.forEach(nombreFruta => {
+        let kilos = cantidades[nombreFruta];
+        if (kilos > 0) {
+            resumenDetalles.innerHTML += nombreFruta + " ---- " + kilos + " kg" + "<br>";;
+            totalKilos += kilos; 
+        }
+    });
+    
 
-document.getElementById("lichi").onclick = function() {
-    añadirFruta("lichi");
-    mostrarResumenCompra();
-};
+    totalPrecioElement.textContent = "Precio total: " + (totalGastado.toFixed(2)) + " €";
 
-document.getElementById("physalis").onclick = function() {
-    añadirFruta("physalis");
-    mostrarResumenCompra();
-};
+    if (totalKilos > 0) {
+        const precioMedio = totalGastado / totalKilos;
+        precioMedioElement.textContent = "Precio medio: " + precioMedio.toFixed(2) + " €/kg";
+    } 
+}
 
-document.getElementById("kumquat").onclick = function() {
-    añadirFruta("kumquat");
-    mostrarResumenCompra();
-};
+function reiniciarCompra() {
+    for (let fruta in cantidades) {
+        cantidades[fruta] = 0; 
+    }
+    dineroGastado = 0; 
+    mostrarResumen(); 
+}
 
-document.getElementById("pawpaw").onclick = function() {
-    añadirFruta("pawpaw");
-    mostrarResumenCompra();
-};
+function agregarFrutaDesdeBoton(fruta) {
+    console.log("Agregando fruta " + fruta);
+    añadirFruta(fruta);
+    mostrarResumen();
+}
 
-document.getElementById("terminarCompra").onclick = function() {
-    mostrarResumenCompra(); 
-    reiniciarCompra(); 
-};
+document.getElementById("terminarCompra").onclick = reiniciarCompra;
+
+const frutas = Object.keys(cantidades);
+frutas.forEach(fruta => {
+    document.getElementById(fruta).onclick = () => agregarFrutaDesdeBoton(fruta);
+    console.log("Botón de " + fruta + " dado");
+});
+
