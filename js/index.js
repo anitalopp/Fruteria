@@ -46,16 +46,15 @@ function mostrarResumen() {
     let totalGastado = dineroGastado; 
 
     const frutasOrdenadas = Object.keys(cantidades).sort().reverse();    
-
-    frutasOrdenadas.forEach(nombreFruta => {
+    frutasOrdenadas.forEach(function(nombreFruta) {
         let kilos = cantidades[nombreFruta];
         if (kilos > 0) {
-            resumenDetalles.innerHTML += nombreFruta + " ---- " + kilos + " kg" + "<br>";;
+            resumenDetalles.innerHTML += nombreFruta + " ---- " + kilos + " kg" + "<br>";
             totalKilos += kilos; 
         }
     });
     
-
+    
     totalPrecioElement.textContent = "Precio total: " + (totalGastado.toFixed(2)) + " €";
 
     if (totalKilos > 0) {
@@ -63,6 +62,8 @@ function mostrarResumen() {
         precioMedioElement.textContent = "Precio medio: " + precioMedio.toFixed(2) + " €/kg";
     } 
 }
+
+document.getElementById("terminarCompra").onclick = reiniciarCompra;
 
 function reiniciarCompra() {
     for (let fruta in cantidades) {
@@ -73,16 +74,15 @@ function reiniciarCompra() {
 }
 
 function agregarFrutaDesdeBoton(fruta) {
-    console.log("Agregando fruta " + fruta);
     añadirFruta(fruta);
     mostrarResumen();
 }
 
-document.getElementById("terminarCompra").onclick = reiniciarCompra;
 
 const frutas = Object.keys(cantidades);
-frutas.forEach(fruta => {
-    document.getElementById(fruta).onclick = () => agregarFrutaDesdeBoton(fruta);
-    console.log("Botón de " + fruta + " dado");
+frutas.forEach(function(fruta) {
+    document.getElementById(fruta).onclick = function() {
+        agregarFrutaDesdeBoton(fruta);
+    };
 });
 
