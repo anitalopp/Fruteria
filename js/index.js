@@ -1,73 +1,75 @@
-const cantidades = {
-    pitahaya: 0,
-    chirimoya: 0,
-    longan: 0,
-    carambola: 0,
-    kiwano: 0,
-    maracuya: 0,
-    lichi: 0,
-    physalis: 0,
-    kumquat: 0,
-    pawpaw: 0,
-};
+const frutas = [
+    "pitahaya",
+    "chirimoya",
+    "longan",
+    "carambola",
+    "kiwano",
+    "maracuya",
+    "lichi",
+    "physalis",
+    "kumquat",
+    "pawpaw"
+];
 
-const precios = {
-    pitahaya: 9.15,
-    chirimoya: 8.60,
-    longan: 7.42,
-    carambola: 6.70,
-    kiwano: 8.99,
-    maracuya: 5.22,
-    lichi: 7.66,
-    physalis: 10.32,
-    kumquat: 8.20,
-    pawpaw: 10.66,
-};
+const precios = [
+    9.15,
+    8.60,
+    7.42,
+    6.70,
+    8.99,
+    5.22,
+    7.66,
+    10.32,
+    8.20,
+    10.66
+];
+
+const cantidades = [];
+for (let i = 0; i < frutas.length; i++) {
+    cantidades[i] = 0;
+}
 
 let dineroGastado = 0;
 
 function añadirFruta(fruta) {
-    if (cantidades[fruta] !== undefined) {
-        cantidades[fruta] += 1; 
-        dineroGastado += precios[fruta]; 
+    const i = frutas.indexOf(fruta);
+    if (i !== -1) {
+        cantidades[i] = cantidades[i] + 1; 
+        dineroGastado = dineroGastado + precios[i];
     }
 }
-
 function mostrarResumen() {
-    const resumenDetalles = document.getElementById("detallesCompra");
-    const totalPrecioElement = document.getElementById("precioTotal");
-    const precioMedioElement = document.getElementById("precioMedio");
+    const resumenCompra = document.getElementById("resumenCompra");
+    const totalPrecio = document.getElementById("precioTotal");
+    const precioMedio = document.getElementById("precioMedio");
 
-    resumenDetalles.textContent = "";
-    totalPrecioElement.textContent = "";
-    precioMedioElement.textContent = "";
+    resumenCompra.textContent = "";
+    totalPrecio.textContent = "";
+    precioMedio.textContent = "";
 
     let totalKilos = 0; 
     let totalGastado = dineroGastado; 
 
-    const frutasOrdenadas = Object.keys(cantidades).sort().reverse();    
-    frutasOrdenadas.forEach(function(nombreFruta) {
-        let kilos = cantidades[nombreFruta];
+    frutas.forEach(function(nombreFruta, index) {
+        let kilos = cantidades[index];
         if (kilos > 0) {
-            resumenDetalles.innerHTML += nombreFruta + " ---- " + kilos + " kg" + "<br>";
-            totalKilos += kilos; 
+            contenidoResumen = contenidoResumen + nombreFruta + " ---- " + kilos + " kg" + "<br>"; 
+            totalKilos = totalKilos + kilos; 
         }
     });
-    
-    
-    totalPrecioElement.textContent = "Precio total: " + (totalGastado.toFixed(2)) + " €";
+    totalPrecio.textContent = "Precio total: " + (totalGastado.toFixed(2)) + " €";
 
     if (totalKilos > 0) {
         const precioMedio = totalGastado / totalKilos;
-        precioMedioElement.textContent = "Precio medio: " + precioMedio.toFixed(2) + " €/kg";
+        precioMedio.textContent = "Precio medio: " + precioMedio.toFixed(2) + " €/kg";
     } 
 }
 
 document.getElementById("terminarCompra").onclick = reiniciarCompra;
 
 function reiniciarCompra() {
-    for (let fruta in cantidades) {
-        cantidades[fruta] = 0; 
+    for (let i = 0; i < cantidades.length; i++) {
+        cantidades[i] = 0; 
     }
     dineroGastado = 0; 
     mostrarResumen(); 
@@ -78,11 +80,8 @@ function agregarFrutaDesdeBoton(fruta) {
     mostrarResumen();
 }
 
-
-const frutas = Object.keys(cantidades);
 frutas.forEach(function(fruta) {
     document.getElementById(fruta).onclick = function() {
         agregarFrutaDesdeBoton(fruta);
     };
 });
-
