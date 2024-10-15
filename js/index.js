@@ -24,66 +24,78 @@ const precios = [
     10.66
 ];
 
-const cantidades = new Array(frutas.length).fill(0); 
+let cantidades = [];
+for (let i = 0; i < frutas.length; i++) {
+    cantidades.push(0);
+}
+
 let dineroGastado = 0;
+let compraFinalizada = false;
 
 function añadirFruta(fruta) {
+    if (compraFinalizada) {
+        reiniciarCompra();
+    }
     const i = frutas.indexOf(fruta);
     if (i !== -1) {
-        cantidades[i] = cantidades[i] + 1;  
-        dineroGastado = dineroGastado + precios[i]; 
+        cantidades[i] += 1;
+        dineroGastado += precios[i];
     }
 }
 
-
-
 function mostrarResumen() {
-    frutas.sort((a, b) => a < b);
+    const frutasOrdenadas = frutas.concat().sort().reverse();
 
     const resumenCompra = document.getElementById("resumenCompra");
     const totalPrecio = document.getElementById("precioTotal");
     const precioMedio = document.getElementById("precioMedio");
 
     let contenidoResumen = "";
-    let totalKilos = 0; 
-    let totalGastado = dineroGastado; 
+    let totalKilos = 0;
+    let totalGastado = dineroGastado;
 
-    
-    frutas.forEach(function(nombreFruta) {
-        const i = frutas.indexOf(nombreFruta)
-        let kilos = cantidades[i];
+    frutasOrdenadas.forEach(function(nombreFruta) {
+        const i = frutas.indexOf(nombreFruta);
+        const kilos = cantidades[i];
         if (kilos > 0) {
-            contenidoResumen = contenidoResumen + nombreFruta + " ---- " + kilos + " kg" + "<br>"; 
-            totalKilos = totalKilos + kilos; 
+            contenidoResumen += nombreFruta + " ---- " + kilos + " kg<br>";
+            totalKilos += kilos;
         }
     });
 
-    resumenCompra.innerHTML = contenidoResumen; 
+    resumenCompra.innerHTML = contenidoResumen;
     totalPrecio.textContent = "Precio total: " + totalGastado.toFixed(2) + " €";
 
     if (totalKilos > 0) {
         const precioMedioCalculado = totalGastado / totalKilos;
         precioMedio.textContent = "Precio medio: " + precioMedioCalculado.toFixed(2) + " €/kg";
     }
+
+    compraFinalizada = true;
 }
 
-document.getElementById("terminarCompra").onclick = reiniciarCompra;
+document.getElementById("terminarCompra").onclick = mostrarResumen;
 
 function reiniciarCompra() {
-    for (let i = 0; i < cantidades.length; i++) {
-        cantidades[i] = 0; 
-    }
-    dineroGastado = 0; 
-    mostrarResumen(); 
+    cantidades = [];
+    for (let i = 0; i < frutas.length; i++) {
+        cantidades[i] = 0;
+    }    
+    dineroGastado = 0;
+
+    document.getElementById("resumenCompra").innerHTML = "";
+    document.getElementById("precioTotal").textContent = "";
+    document.getElementById("precioMedio").textContent = "";
+
+    compraFinalizada = false;
 }
 
 function agregarFrutaDesdeBoton(fruta) {
     añadirFruta(fruta);
-    mostrarResumen();
 }
 
 frutas.forEach(function(fruta) {
     document.getElementById(fruta).onclick = function() {
         agregarFrutaDesdeBoton(fruta);
     };
-});  
+});
