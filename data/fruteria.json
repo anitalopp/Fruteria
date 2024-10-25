@@ -1,0 +1,82 @@
+{
+    "frutas": [
+        {
+            "id": 1,
+            "nombre": "Pitahaya",
+            "precioKilo": 9.15,
+            "temporada": "verano",
+            "proximidad": true,
+            "region": "Sudamérica"
+        },
+        {
+            "id": 2,
+            "nombre": "Chirimoya",
+            "precioKilo": 8.60,
+            "temporada": "invierno",
+            "refrigerar": true
+        },
+        {
+            "id": 3,
+            "nombre": "Longan",
+            "precioKilo": 7.42,
+            "temporada": "verano",
+            "proximidad": false,
+            "region": "Asia"
+        },
+        {
+            "id": 4,
+            "nombre": "Carambola",
+            "precioKilo": 6.70,
+            "temporada": "verano",
+            "proximidad": true,
+            "region": "Sudeste Asiático"
+        },
+        {
+            "id": 5,
+            "nombre": "Kiwano",
+            "precioKilo": 8.99,
+            "temporada": "verano",
+            "proximidad": false,
+            "region": "África"
+        },
+        {
+            "id": 6,
+            "nombre": "Maracuyá",
+            "precioKilo": 5.22,
+            "temporada": "verano",
+            "proximidad": true,
+            "region": "Sudamérica"
+        },
+        {
+            "id": 7,
+            "nombre": "Lichi",
+            "precioKilo": 7.66,
+            "temporada": "verano",
+            "proximidad": false,
+            "region": "Asia"
+        },
+        {
+            "id": 8,
+            "nombre": "Physalis",
+            "precioKilo": 10.32,
+            "temporada": "verano",
+            "proximidad": true,
+            "region": "Sudamérica"
+        },
+        {
+            "id": 9,
+            "nombre": "Kumquat",
+            "precioKilo": 8.20,
+            "temporada": "invierno",
+            "refrigerar": false
+        },
+        {
+            "id": 10,
+            "nombre": "PawPaw",
+            "precioKilo": 10.66,
+            "temporada": "invierno",
+            "refrigerar": true
+        }
+    ]
+    
+}
