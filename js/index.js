@@ -24,11 +24,7 @@ const precios = [
     10.66
 ];
 
-let cantidades = [];
-for (let i = 0; i < frutas.length; i++) {
-    cantidades.push(0);
-}
-
+let cantidades = Array(frutas.length).fill(0);
 let dineroGastado = 0;
 let compraFinalizada = false;
 
@@ -74,13 +70,8 @@ function mostrarResumen() {
     compraFinalizada = true;
 }
 
-document.getElementById("terminarCompra").onclick = mostrarResumen;
-
 function reiniciarCompra() {
-    cantidades = [];
-    for (let i = 0; i < frutas.length; i++) {
-        cantidades[i] = 0;
-    }    
+    cantidades.fill(0);
     dineroGastado = 0;
 
     document.getElementById("resumenCompra").innerHTML = "";
@@ -94,8 +85,14 @@ function agregarFrutaDesdeBoton(fruta) {
     añadirFruta(fruta);
 }
 
-frutas.forEach(function(fruta) {
-    document.getElementById(fruta).onclick = function() {
-        agregarFrutaDesdeBoton(fruta);
-    };
-});
+function inicializarCompra() {
+    frutas.forEach(function(fruta) {
+        document.getElementById(fruta).onclick = function() {
+            agregarFrutaDesdeBoton(fruta);
+        };
+    });
+
+    document.getElementById("terminarCompra").onclick = mostrarResumen;
+}
+
+inicializarCompra();
