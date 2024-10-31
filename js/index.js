@@ -1,29 +1,63 @@
-const frutas = [
-    "pitahaya",
-    "chirimoya",
-    "longan",
-    "carambola",
-    "kiwano",
-    "maracuya",
-    "lichi",
-    "physalis",
-    "kumquat",
-    "pawpaw"
-];
 
-const precios = [
-    9.15,
-    8.60,
-    7.42,
-    6.70,
-    8.99,
-    5.22,
-    7.66,
-    10.32,
-    8.20,
-    10.66
-];
+const botonTerminar = document.getElementById('terminarCompra');
 
+botonTerminar.addEventListener('click', procesarCompra);
+
+function procesarCompra() {
+    const resumenCompra = document.getElementById('resumenCompra');
+    const precioTotal = document.getElementById('precioTotal');
+    const precioMedio = document.getElementById('precioMedio');
+    
+    resumenCompra.innerHTML = '';
+    precioTotal.innerHTML = '';
+    precioMedio.innerHTML = '';
+
+    let total = 0;
+    let cantidadFrutas = 0;
+
+    frutas.forEach(fruta => {
+        const inputFruta = document.getElementById(`input-${fruta.id}`);
+        const kilos = parseFloat(inputFruta.value);
+
+        if (kilos > 0) {
+            const precioFruta = (kilos * fruta.precio).toFixed(2);
+            total += parseFloat(precioFruta);
+            cantidadFrutas += kilos;
+
+            agregarResumenFruta(fruta, kilos, precioFruta, resumenCompra);
+        }
+    });
+
+    precioTotal.textContent = `Precio Total: ${total.toFixed(2)} EUR`;
+    if (cantidadFrutas > 0) {
+        precioMedio.textContent = `Precio Medio: ${(total / cantidadFrutas).toFixed(2)} EUR/kg`;
+    } else {
+        precioMedio.textContent = 'No se han seleccionado frutas.';
+    }
+}
+
+function agregarResumenFruta(fruta, kilos, precioFruta, contenedor) {
+    const frutaResumen = document.createElement('div');
+    frutaResumen.textContent = `${fruta.nombre}: ${kilos} kg x ${fruta.precio} EUR/kg = ${precioFruta} EUR`;
+    contenedor.appendChild(frutaResumen);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
 let cantidades = Array(frutas.length).fill(0);
 let dineroGastado = 0;
 let compraFinalizada = false;
@@ -81,9 +115,7 @@ function reiniciarCompra() {
     compraFinalizada = false;
 }
 
-function agregarFrutaDesdeBoton(fruta) {
-    añadirFruta(fruta);
-}
+
 
 function inicializarCompra() {
     frutas.forEach(function(fruta) {
@@ -96,3 +128,4 @@ function inicializarCompra() {
 }
 
 inicializarCompra();
+ */
