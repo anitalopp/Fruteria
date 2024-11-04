@@ -1,131 +1,101 @@
+const frutas = [
+    "pitahaya",
+    "chirimoya",
+    "longan",
+    "carambola",
+    "kiwano",
+    "maracuya",
+    "lichi",
+    "physalis",
+    "kumquat",
+    "pawpaw"
+];
 
-const botonTerminar = document.getElementById('terminarCompra');
+const precios = [
+    9.15,
+    8.60,
+    7.42,
+    6.70,
+    8.99,
+    5.22,
+    7.66,
+    10.32,
+    8.20,
+    10.66
+];
 
-botonTerminar.addEventListener('click', procesarCompra);
+let frutasKilos = {};
+frutas.forEach(fruta => {
+    frutasKilos[fruta] = 0; 
+});
 
-function procesarCompra() {
-    const resumenCompra = document.getElementById('resumenCompra');
-    const precioTotal = document.getElementById('precioTotal');
-    const precioMedio = document.getElementById('precioMedio');
-    
-    resumenCompra.innerHTML = '';
-    precioTotal.innerHTML = '';
-    precioMedio.innerHTML = '';
-
-    let total = 0;
-    let cantidadFrutas = 0;
-
-    frutas.forEach(fruta => {
-        const inputFruta = document.getElementById(`input-${fruta.id}`);
-        const kilos = parseFloat(inputFruta.value);
-
-        if (kilos > 0) {
-            const precioFruta = (kilos * fruta.precio).toFixed(2);
-            total += parseFloat(precioFruta);
-            cantidadFrutas += kilos;
-
-            agregarResumenFruta(fruta, kilos, precioFruta, resumenCompra);
-        }
-    });
-
-    precioTotal.textContent = `Precio Total: ${total.toFixed(2)} EUR`;
-    if (cantidadFrutas > 0) {
-        precioMedio.textContent = `Precio Medio: ${(total / cantidadFrutas).toFixed(2)} EUR/kg`;
-    } else {
-        precioMedio.textContent = 'No se han seleccionado frutas.';
-    }
-}
-
-function agregarResumenFruta(fruta, kilos, precioFruta, contenedor) {
-    const frutaResumen = document.createElement('div');
-    frutaResumen.textContent = `${fruta.nombre}: ${kilos} kg x ${fruta.precio} EUR/kg = ${precioFruta} EUR`;
-    contenedor.appendChild(frutaResumen);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* 
-let cantidades = Array(frutas.length).fill(0);
 let dineroGastado = 0;
 let compraFinalizada = false;
 
-function añadirFruta(fruta) {
-    if (compraFinalizada) {
-        reiniciarCompra();
-    }
-    const i = frutas.indexOf(fruta);
-    if (i !== -1) {
-        cantidades[i] += 1;
-        dineroGastado += precios[i];
+function agregarFrutaDesdeBoton(fruta) {
+    const inputFruta = document.getElementById(`input-${fruta}`);
+    const kilos = parseFloat(inputFruta.value);    
+    
+    if (!isNaN(kilos) && kilos > 0) {
+        frutasKilos[fruta] += kilos; 
+        dineroGastado += kilos * precios[frutas.indexOf(fruta)]; 
+        inputFruta.value = ''; 
+    } else {        
+        alert("Por favor, ingrese un número de kilos válido");
     }
 }
 
 function mostrarResumen() {
-    const frutasOrdenadas = frutas.concat().sort().reverse();
-
     const resumenCompra = document.getElementById("resumenCompra");
     const totalPrecio = document.getElementById("precioTotal");
     const precioMedio = document.getElementById("precioMedio");
 
     let contenidoResumen = "";
     let totalKilos = 0;
-    let totalGastado = dineroGastado;
 
-    frutasOrdenadas.forEach(function(nombreFruta) {
-        const i = frutas.indexOf(nombreFruta);
-        const kilos = cantidades[i];
+    for (const fruta in frutasKilos) {
+        const kilos = frutasKilos[fruta];
         if (kilos > 0) {
-            contenidoResumen += nombreFruta + " ---- " + kilos + " kg<br>";
+            contenidoResumen += `${fruta} ---- ${kilos} kg<br>`;
             totalKilos += kilos;
         }
-    });
+    }
 
     resumenCompra.innerHTML = contenidoResumen;
-    totalPrecio.textContent = "Precio total: " + totalGastado.toFixed(2) + " €";
+    totalPrecio.textContent = "Precio total: " + dineroGastado.toFixed(2) + " €";
 
     if (totalKilos > 0) {
-        const precioMedioCalculado = totalGastado / totalKilos;
+        const precioMedioCalculado = dineroGastado / totalKilos;
         precioMedio.textContent = "Precio medio: " + precioMedioCalculado.toFixed(2) + " €/kg";
+    } else {
+        precioMedio.textContent = "No se han agregado frutas.";
     }
 
     compraFinalizada = true;
 }
 
 function reiniciarCompra() {
-    cantidades.fill(0);
+    frutas.forEach(fruta => {
+        frutasKilos[fruta] = 0; 
+    });
     dineroGastado = 0;
 
     document.getElementById("resumenCompra").innerHTML = "";
     document.getElementById("precioTotal").textContent = "";
     document.getElementById("precioMedio").textContent = "";
-
     compraFinalizada = false;
 }
 
+document.getElementById("terminarCompra").onclick = function() {
+    if (compraFinalizada) {
+        reiniciarCompra();
+    } else {
+        mostrarResumen();
+    }
+};
 
-
-function inicializarCompra() {
-    frutas.forEach(function(fruta) {
-        document.getElementById(fruta).onclick = function() {
-            agregarFrutaDesdeBoton(fruta);
-        };
-    });
-
-    document.getElementById("terminarCompra").onclick = mostrarResumen;
-}
-
-inicializarCompra();
- */
+frutas.forEach(fruta => {
+    document.getElementById(fruta).onclick = function() {
+        agregarFrutaDesdeBoton(fruta);
+    };
+});

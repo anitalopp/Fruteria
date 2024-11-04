@@ -13,7 +13,7 @@
             "nombre": "Chirimoya",
             "precioKilo": 8.60,
             "temporada": "invierno",
-            "refrigerar": true
+            "conservarFueraNevera": true
         },
         {
             "id": 3,
@@ -68,15 +68,32 @@
             "nombre": "Kumquat",
             "precioKilo": 8.20,
             "temporada": "invierno",
-            "refrigerar": false
+            "conservarFueraNevera": false
         },
         {
             "id": 10,
             "nombre": "PawPaw",
             "precioKilo": 10.66,
             "temporada": "invierno",
-            "refrigerar": true
+            "conservarFueraNevera": true
+        }
+    ],
+    "pedidos": [
+        {
+            "id": 1,
+            "fecha": "01-2020",
+            "productos": [
+                {
+                    "idFruta": 7,
+                    "importeTotal": 45.78,
+                    "numKilos": 5
+                },
+                {
+                    "idFruta": 1,
+                    "importeTotal": 37.23,
+                    "numKilos": 3
+                }
+            ]
         }
     ]
-    
 }
