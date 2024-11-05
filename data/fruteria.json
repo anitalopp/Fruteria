@@ -2,7 +2,7 @@
     "frutas": [
         {
             "id": 1,
-            "nombre": "Pitahaya",
+            "nombre": "pitahaya",
             "precioKilo": 9.15,
             "temporada": "verano",
             "proximidad": true,
@@ -11,7 +11,7 @@
         },
         {
             "id": 2,
-            "nombre": "Chirimoya",
+            "nombre": "chirimoya",
             "precioKilo": 8.60,
             "temporada": "invierno",
             "conservarFueraNevera": true,
@@ -19,7 +19,7 @@
         },
         {
             "id": 3,
-            "nombre": "Longan",
+            "nombre": "longan",
             "precioKilo": 7.42,
             "temporada": "verano",
             "proximidad": false,
@@ -28,7 +28,7 @@
         },
         {
             "id": 4,
-            "nombre": "Carambola",
+            "nombre": "carambola",
             "precioKilo": 6.70,
             "temporada": "verano",
             "proximidad": true,
@@ -37,7 +37,7 @@
         },
         {
             "id": 5,
-            "nombre": "Kiwano",
+            "nombre": "kiwano",
             "precioKilo": 8.99,
             "temporada": "verano",
             "proximidad": false,
@@ -46,7 +46,7 @@
         },
         {
             "id": 6,
-            "nombre": "Maracuyá",
+            "nombre": "maracuya",
             "precioKilo": 5.22,
             "temporada": "verano",
             "proximidad": true,
@@ -55,7 +55,7 @@
         },
         {
             "id": 7,
-            "nombre": "Lichi",
+            "nombre": "lichi",
             "precioKilo": 7.66,
             "temporada": "verano",
             "proximidad": false,
@@ -64,7 +64,7 @@
         },
         {
             "id": 8,
-            "nombre": "Physalis",
+            "nombre": "physalis",
             "precioKilo": 10.32,
             "temporada": "verano",
             "proximidad": true,
@@ -73,7 +73,7 @@
         },
         {
             "id": 9,
-            "nombre": "Kumquat",
+            "nombre": "kumquat",
             "precioKilo": 8.20,
             "temporada": "invierno",
             "conservarFueraNevera": false,
@@ -81,7 +81,7 @@
         },
         {
             "id": 10,
-            "nombre": "PawPaw",
+            "nombre": "pawpaw",
             "precioKilo": 10.66,
             "temporada": "invierno",
             "conservarFueraNevera": true,

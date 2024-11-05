@@ -12,7 +12,7 @@ function cargarFrutas() {
 
             document.getElementById("terminarCompra").onclick = function() {
                 if (compraFinalizada) {
-                    //TODO mostrarPeculiaridades();
+                    mostrarPeculiaridades();
                     reiniciarCompraTimeout();
                 } else {
                     mostrarResumen();
@@ -27,11 +27,11 @@ function cargarFrutas() {
 }
 
 
-function agregarFruta(idF) {
-    const inputFruta = document.getElementById(`input-${idF.toLowerCase()}`); 
-
+function agregarFruta(nombre) {
+    console.log(nombre);
+    const inputFruta = document.getElementById(`input-${nombre.toLowerCase()}`);
     const kilos = parseInt(inputFruta.value);
-    const fruta = buscarPorId(idF);
+    const fruta = buscarPorId(nombre);
 
     if (!isNaN(kilos) && kilos > 0) {
         let indiceFruta = encontrarFrutaAgregada(idF);
@@ -45,6 +45,8 @@ function agregarFruta(idF) {
                     "nombre": fruta.nombre, 
                     "numKilos": kilos,
                     "importeTotal": kilos * fruta.precioKilo,
+                    "temporada": fruta.temporada,
+                    "mensaje": fruta.mensaje
                 }
             );
             actualizarBarraLateral(fruta.nombre, kilos);
@@ -201,18 +203,33 @@ function finalizarPedido() {
     compraFinalizada = true;
 }
 
+function mostrarPeculiaridades() {
+    const ventanaEmergente = document.getElementById("ventanaEmergente");  
+    const contenidoVentana = document.getElementById("contenidoVentanaEmergentes");
 
+    const frutasResumen = frutasKilos.map(fruta => {
+        return `${fruta.nombre}: ${fruta.mensaje}`;
+    }).join("<br>");
 
-const peculiaridadesFrutas = {
-    "pitahaya": "es fruta de verano y rica en vitamina C.",
-    "chirimoya": "es fruta de invierno, dulce y cremosa.",
-    "longan": "es fruta de verano, refrescante y tropical.",
-    "carambola": "es fruta de verano, ácida y jugosa.",
-    "kiwano": "es fruta de verano, exótica y rica en antioxidantes.",
-    "maracuya": "es fruta de verano, muy aromática y rica en fibra.",
-    "lichi": "es fruta de verano, dulce y refrescante.",
-    "physalis": "es fruta de verano, tiene un sabor agridulce.",
-    "kumquat": "es fruta de invierno, se puede comer con piel.",
-    "pawpaw": "es fruta de verano, rica en vitaminas A y C."
-};
+    contenidoVentana.innerHTML = frutasResumen; 
+    ventanaEmergente.style.display = "block"; 
 
+    document.getElementById("cerrarModal").onclick = function() {
+        ventanaEmergente.style.display = "none";
+    };
+}
+
+function reiniciarCompra() {
+    frutasKilos.length = 0;
+
+    dineroGastado = 0;
+
+    document.getElementById("resumenCompra").innerHTML = "";
+    document.getElementById("precioTotal").textContent = "";
+    document.getElementById("precioMedio").textContent = "";
+
+    compraFinalizada = false;
+
+    const frutasAñadidas = document.getElementById('frutasAñadidas');
+    frutasAñadidas.innerHTML = '';
+}
