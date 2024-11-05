@@ -194,6 +194,14 @@ function agregarFrutaAlLateral(fruta, kilos) {
 
         // Marca las frutas previamente agregadas
         const frutasPrevias = frutasAñadidas.querySelectorAll(`.fruta-item[data-fruta="${fruta}"]`);
-        frutasPrevias.for
+        frutasPrevias.forEach(frutaPrevias => {
+            frutaPrevias.classList.add('subrayado'); // Añade un subrayado a frutas repetidas
+        });
+
+        frutaActual.setAttribute('data-fruta', fruta); // Establece un atributo data para identificación
+
+        frutasAñadidas.appendChild(frutaActual); // Añade el nuevo elemento a la lista de frutas añadidas
+
+        ultimaFrutaAgregada = frutaActual; // Actualiza la última fruta agregada
     }
 }
