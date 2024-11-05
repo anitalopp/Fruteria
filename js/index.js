@@ -10,7 +10,7 @@ function cargarFrutas() {
             listaFrutas=data;
             document.getElementById("terminarCompra").onclick = function() {
                 if (compraFinalizada) {
-                    mostrarPeculiaridades(); 
+                   // TODO mostrarPeculiaridades(); 
                     reiniciarCompraTimeout();
                 } else {
                     mostrarResumen();
