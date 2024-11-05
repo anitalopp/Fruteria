@@ -1,39 +1,58 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
     font-family: Arial, sans-serif;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    align-items: flex-start;
     background-color: beige;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+}
+
+.contenido-principal {
+    width: 75%;
+    padding: 20px;
+}
+
+.zona-lateral-derecha {
+    width: 25%;
+    background-color: #ffabab77;
+    padding: 20px;
+    height: 100vh;
+    overflow-y: auto;
 }
 
 header {
-    margin-top: 15px;
-    width: 80%;
     text-align: center;
-    padding: 20px 0;
-    background-color: #ffabab77;
-    box-shadow: 0 10px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 25px;
+    background-color: #ffabab;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 main {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     width: 100%;
-    flex-direction: column;
 }
 
 .contenedor {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 20px;
-    margin-top: 10px;
+    gap: 15px;
 }
 
 .fruta {
@@ -42,13 +61,13 @@ main {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 10px;
     text-align: center;
+    width: 100px;
 }
 
 .fruta img {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
-    margin-bottom: 10px;
 }
 
 .infoFruta {
@@ -57,25 +76,44 @@ main {
 }
 
 .nombreFruta {
-    font-size: 18px;
+    font-size: 14px;
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
 }
 
 .precioFruta {
-    font-size: 16px;
+    font-size: 12px;
     color: #333;
 }
 
-.total {
-    margin-top: 10px; 
-    padding: 10px 20px;
-    text-align: center;
-    background-color: white;
-    border: 2px solid #333;
-    border-radius: 10px;
-    font-size: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: left;
+.input-kilos {
+    width: 70px;
+    padding: 5px;
+    margin-top: 5px;
+    font-size: 12px;
 }
 
+.total {
+    margin-top: 20px;
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-size: 14px;
+}
+
+.zona-lateral-derecha h2,
+.total h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.frutaSeleccionada {
+    list-style: none;
+    padding: 5px;
+}
+
+.resaltada {
+    background-color: lightblue;
+}
