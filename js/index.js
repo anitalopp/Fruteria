@@ -5,8 +5,15 @@ const frutasAñadidas = document.getElementById('frutasAñadidas');
 var ultimaFrutaAgregada = null; 
 
 function cargarFrutas() {
+    console.log("Frutas cargadas correctamente")
     fetch("http://localhost:3000/frutas")
-        .then((response) => response.json())
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error('Error al almacenar el pedido');
+        }
+    })
         .then((data) => {
             listaFrutas = data;
 
@@ -24,14 +31,25 @@ function cargarFrutas() {
             });
         })
         .catch((error) => console.error("Error al cargar frutas:", error));
+        const imagenesFruta = document.querySelectorAll('.fruta img');
+
+        listaFrutas.forEach(fruta => {
+            const imagenFruta = document.getElementById(fruta.nombre.toLowerCase());
+            
+            if (imagenFruta) {
+                imagenFruta.addEventListener('click', function() {
+                    agregarFruta(fruta.id);
+                });
+            }
+        });
+        
 }
 
 
-function agregarFruta(nombre) {
-    console.log(nombre);
-    const inputFruta = document.getElementById(`input-${nombre.toLowerCase()}`);
+function agregarFruta(id) {
+    const inputFruta = document.getElementById(`input-${id}`);
     const kilos = parseInt(inputFruta.value);
-    const fruta = buscarPorId(nombre);
+    const fruta = buscarPorId(id);
 
     if (!isNaN(kilos) && kilos > 0) {
         let indiceFruta = encontrarFrutaAgregada(idF);
@@ -141,9 +159,10 @@ function actualizarBarraLateral(fruta, kilos) {
         }
         
         const frutasPrevias = frutasAñadidas.querySelectorAll(`.fruta-item[data-fruta="${fruta}"]`);
-        frutasPrevias.forEach(frutaPrevias => {
-            frutaPrevias.classList.add('subrayado'); 
+        frutasPrevias.forEach(frutaItem => {
+            frutaItem.classList.add('subrayado'); 
         });
+        
 
         ultimaFrutaAgregada = frutasAñadidas.lastElementChild; 
     }
@@ -219,17 +238,3 @@ function mostrarPeculiaridades() {
     };
 }
 
-function reiniciarCompra() {
-    frutasKilos.length = 0;
-
-    dineroGastado = 0;
-
-    document.getElementById("resumenCompra").innerHTML = "";
-    document.getElementById("precioTotal").textContent = "";
-    document.getElementById("precioMedio").textContent = "";
-
-    compraFinalizada = false;
-
-    const frutasAñadidas = document.getElementById('frutasAñadidas');
-    frutasAñadidas.innerHTML = '';
-}
