@@ -148,6 +148,78 @@
           "importeTotal": 8.6
         }
       ]
+    },
+    {
+      "id": "dda5",
+      "fecha": "6/11/2024 14:00",
+      "productos": [
+        {
+          "id": 1,
+          "nombre": "pitahaya",
+          "numKilos": 4,
+          "importeTotal": 36.6
+        },
+        {
+          "id": 2,
+          "nombre": "chirimoya",
+          "numKilos": 1,
+          "importeTotal": 8.6
+        }
+      ]
+    },
+    {
+      "id": "8673",
+      "fecha": "6/11/2024 14:02",
+      "productos": [
+        {
+          "id": 1,
+          "nombre": "pitahaya",
+          "numKilos": 4,
+          "importeTotal": 36.6
+        },
+        {
+          "id": 2,
+          "nombre": "chirimoya",
+          "numKilos": 1,
+          "importeTotal": 8.6
+        }
+      ]
+    },
+    {
+      "id": "9d60",
+      "fecha": "6/11/2024 14:04",
+      "productos": [
+        {
+          "id": 1,
+          "nombre": "pitahaya",
+          "numKilos": 4,
+          "importeTotal": 36.6
+        },
+        {
+          "id": 2,
+          "nombre": "chirimoya",
+          "numKilos": 1,
+          "importeTotal": 8.6
+        }
+      ]
+    },
+    {
+      "id": "a6eb",
+      "fecha": "6/11/2024 14:05",
+      "productos": [
+        {
+          "id": 1,
+          "nombre": "pitahaya",
+          "numKilos": 4,
+          "importeTotal": 36.6
+        },
+        {
+          "id": 2,
+          "nombre": "chirimoya",
+          "numKilos": 1,
+          "importeTotal": 8.6
+        }
+      ]
     }
   ]
 }

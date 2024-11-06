@@ -1,7 +1,6 @@
 var listaFrutas = [];
 const compra = [];
 var compraFinalizada = false;
-const frutasAñadidas = document.getElementById('frutasAñadidas');
 var compraTotal = 0;
 var totalKilosPedido = 0;
 
@@ -100,14 +99,13 @@ function mostrarResumen(fecha) {
 function finalizarPedido() {
     compra.sort((a, b) => b.nombre.localeCompare(a.nombre));
 
-
     const fechaCompra = new Date();
     const fechaFormateada = fechaCompra.toLocaleDateString("es-ES");
     const horaFormateada = fechaCompra.toLocaleTimeString("es-ES", { hour: '2-digit', minute: '2-digit' });
 
     enviarPedido(`${fechaFormateada} ${horaFormateada}`);
     mostrarResumen(`${fechaFormateada} ${horaFormateada}`);
-
+    reiniciarCompraTimeout();
 }
 
 function enviarPedido(fecha)  {
@@ -137,12 +135,35 @@ function reiniciarCompra() {
 
     compraFinalizada = false;
 
-    const frutasAñadidas = document.getElementById('frutasAñadidas');
-    frutasAñadidas.innerHTML = '';
+    const frutasAnadidas = document.getElementById('frutasAnadidas');
+    frutasAnadidas.innerHTML = '';
+
+
 }
 
 function reiniciarCompraTimeout() {
+    let valorVentana = abrirVentanaEmergente();
     setTimeout(() => {
         reiniciarCompra();
+        valorVentana.close();
     }, 10000); 
+}
+
+function abrirVentanaEmergente() {
+    let ventana = window.open("", "Ventana Emergente Frutería", "width=600, height= 600, menubar=No, scrollbar=No");
+    ventana.document.write(abrirMensaje());
+    return ventana;
+}
+
+function abrirMensaje() {
+    let mensaje = "";
+    compra.forEach(m => {
+        let fruta = buscarPorId(m.id);
+        if (fruta.temporada == "verano") {
+            mensaje += `${fruta.nombre}: de verano, de proximidad: ${fruta.proximidad ? "si " : "no "}, y están recogidas en ${fruta.region}`;
+        } else {
+            mensaje += `${fruta.nombre}: de invierno, recomendable refrigerar: ${fruta.refrigerar ? "si " : "no "}`;
+        }
+    })    
+    return mensaje;
 }
