@@ -1,109 +1,153 @@
 {
-    "frutas": [
+  "frutas": [
+    {
+      "id": 1,
+      "nombre": "pitahaya",
+      "precioKilo": 9.15,
+      "temporada": "verano",
+      "proximidad": true,
+      "region": "Sudamérica"
+    },
+    {
+      "id": 2,
+      "nombre": "chirimoya",
+      "precioKilo": 8.6,
+      "temporada": "invierno",
+      "refrigerar": true
+    },
+    {
+      "id": 3,
+      "nombre": "longan",
+      "precioKilo": 7.42,
+      "temporada": "verano",
+      "proximidad": false,
+      "region": "Asia"
+    },
+    {
+      "id": 4,
+      "nombre": "carambola",
+      "precioKilo": 6.7,
+      "temporada": "verano",
+      "proximidad": true,
+      "region": "Sudeste Asiático"
+    },
+    {
+      "id": 5,
+      "nombre": "kiwano",
+      "precioKilo": 8.99,
+      "temporada": "verano",
+      "proximidad": false,
+      "region": "África"
+    },
+    {
+      "id": 6,
+      "nombre": "maracuya",
+      "precioKilo": 5.22,
+      "temporada": "verano",
+      "proximidad": true,
+      "region": "Sudamérica"
+    },
+    {
+      "id": 7,
+      "nombre": "lichi",
+      "precioKilo": 7.66,
+      "temporada": "verano",
+      "proximidad": false,
+      "region": "Asia"
+    },
+    {
+      "id": 8,
+      "nombre": "physalis",
+      "precioKilo": 10.32,
+      "temporada": "verano",
+      "proximidad": true,
+      "region": "Sudamérica"
+    },
+    {
+      "id": 9,
+      "nombre": "kumquat",
+      "precioKilo": 8.2,
+      "temporada": "invierno",
+      "refrigerar": false
+    },
+    {
+      "id": 10,
+      "nombre": "pawpaw",
+      "precioKilo": 10.66,
+      "temporada": "invierno",
+      "refrigerar": true
+    }
+  ],
+  "pedidos": [
+    {
+      "id": 1,
+      "fecha": "01-2020",
+      "productos": [
         {
-            "id": 1,
-            "nombre": "pitahaya",
-            "precioKilo": 9.15,
-            "temporada": "verano",
-            "proximidad": true,
-            "region": "Sudamérica",
-            "mensaje": "La pitahaya, también conocida como fruta del dragón, es una fruta tropical de verano, recogida en las regiones cercanas. Es rica en antioxidantes y vitamina C."
+          "idFruta": 7,
+          "importeTotal": 45.78,
+          "numKilos": 5
         },
         {
-            "id": 2,
-            "nombre": "chirimoya",
-            "precioKilo": 8.60,
-            "temporada": "invierno",
-            "conservarFueraNevera": true,
-            "mensaje": "La chirimoya es una fruta de invierno, muy sabrosa y recomendada para consumir fuera de la nevera. Su textura cremosa es ideal para batidos y postres."
-        },
-        {
-            "id": 3,
-            "nombre": "longan",
-            "precioKilo": 7.42,
-            "temporada": "verano",
-            "proximidad": false,
-            "region": "Asia",
-            "mensaje": "El longan es una fruta de verano originaria de Asia. Aunque no es de proximidad, su sabor dulce y refrescante es muy popular en la gastronomía asiática."
-        },
-        {
-            "id": 4,
-            "nombre": "carambola",
-            "precioKilo": 6.70,
-            "temporada": "verano",
-            "proximidad": true,
-            "region": "Sudeste Asiático",
-            "mensaje": "La carambola es una fruta de verano, conocida por su forma estrella al cortarla. Es originaria del sudeste asiático y es rica en vitamina C."
-        },
-        {
-            "id": 5,
-            "nombre": "kiwano",
-            "precioKilo": 8.99,
-            "temporada": "verano",
-            "proximidad": false,
-            "region": "África",
-            "mensaje": "El kiwano, también conocido como melón cornudo, es una fruta exótica de verano originaria de África. Su pulpa es jugosa y tiene un sabor refrescante y ligeramente ácido."
-        },
-        {
-            "id": 6,
-            "nombre": "maracuya",
-            "precioKilo": 5.22,
-            "temporada": "verano",
-            "proximidad": true,
-            "region": "Sudamérica",
-            "mensaje": "El maracuyá es una fruta de verano, muy apreciada por su sabor ácido y refrescante. Se cultiva en Sudamérica y es perfecta para jugos y postres."
-        },
-        {
-            "id": 7,
-            "nombre": "lichi",
-            "precioKilo": 7.66,
-            "temporada": "verano",
-            "proximidad": false,
-            "region": "Asia",
-            "mensaje": "El lichi es una fruta tropical de verano originaria de Asia. Es conocida por su dulce sabor y su textura jugosa, ideal para comer fresca o en ensaladas."
-        },
-        {
-            "id": 8,
-            "nombre": "physalis",
-            "precioKilo": 10.32,
-            "temporada": "verano",
-            "proximidad": true,
-            "region": "Sudamérica",
-            "mensaje": "El physalis, también llamado uchuva, es una pequeña fruta de verano, originaria de Sudamérica. Es rica en antioxidantes y tiene un sabor ligeramente ácido."
-        },
-        {
-            "id": 9,
-            "nombre": "kumquat",
-            "precioKilo": 8.20,
-            "temporada": "invierno",
-            "conservarFueraNevera": false,
-            "mensaje": "El kumquat es una fruta de invierno, pequeña y cítrica, que se consume entera, con la piel incluida. No debe conservarse fuera de la nevera, ya que su frescura es clave."
-        },
-        {
-            "id": 10,
-            "nombre": "pawpaw",
-            "precioKilo": 10.66,
-            "temporada": "invierno",
-            "conservarFueraNevera": true,
-            "mensaje": "La pawpaw es una fruta de invierno, originaria de América del Norte. Tiene una pulpa cremosa y un sabor que recuerda al plátano y la papaya. Se recomienda conservar fuera de la nevera para preservar su sabor."
+          "idFruta": 1,
+          "importeTotal": 37.23,
+          "numKilos": 3
         }
-    ],
-    "pedidos": [
+      ]
+    },
+    {
+      "id": "9ceb",
+      "fecha": "6/11/2024 13:21",
+      "productos": [
         {
-            "id": 1,
-            "fecha": "01-2020",
-            "productos": [
-                {
-                    "idFruta": 7,
-                    "importeTotal": 45.78,
-                    "numKilos": 5
-                },
-                {
-                    "idFruta": 1,
-                    "importeTotal": 37.23,
-                    "numKilos": 3
-                }
-            ]
+          "id": 1,
+          "nombre": "pitahaya",
+          "numKilos": 4,
+          "importeTotal": 36.6
+        },
+        {
+          "id": 2,
+          "nombre": "chirimoya",
+          "numKilos": 1,
+          "importeTotal": 8.6
         }
-    ]
+      ]
+    },
+    {
+      "id": "c398",
+      "fecha": "6/11/2024 13:28",
+      "productos": [
+        {
+          "id": 1,
+          "nombre": "pitahaya",
+          "numKilos": 4,
+          "importeTotal": 36.6
+        },
+        {
+          "id": 2,
+          "nombre": "chirimoya",
+          "numKilos": 1,
+          "importeTotal": 8.6
+        }
+      ]
+    },
+    {
+      "id": "6268",
+      "fecha": "6/11/2024 13:28",
+      "productos": [
+        {
+          "id": 1,
+          "nombre": "pitahaya",
+          "numKilos": 4,
+          "importeTotal": 36.6
+        },
+        {
+          "id": 2,
+          "nombre": "chirimoya",
+          "numKilos": 1,
+          "importeTotal": 8.6
+        }
+      ]
+    }
+  ]
 }
