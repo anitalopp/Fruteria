@@ -8,43 +8,19 @@ function cargarFrutas() {
     console.log("Frutas cargadas correctamente")
     fetch("http://localhost:3000/frutas")
     .then(response => {
-        if (response.ok) {
-            return response.json();
-        } else {
-            throw new Error('Error al almacenar el pedido');
-        }
+        agregarEventoFruta();
+        return response.json();
     })
-        .then((data) => {
-            listaFrutas = data;
-
-            document.getElementById("terminarCompra").onclick = function() {
-                if (compraFinalizada) {
-                    mostrarPeculiaridades();
-                    reiniciarCompraTimeout();
-                } else {
-                    mostrarResumen();
-                }
-            };
-
-            listaFrutas.forEach(fruta => {
-                document.getElementById(fruta.nombre.toLowerCase()).onclick = () => agregarFruta(fruta.id);
-            });
-        })
-        .catch((error) => console.error("Error al cargar frutas:", error));
-        const imagenesFruta = document.querySelectorAll('.fruta img');
-
-        listaFrutas.forEach(fruta => {
-            const imagenFruta = document.getElementById(fruta.nombre.toLowerCase());
-            
-            if (imagenFruta) {
-                imagenFruta.addEventListener('click', function() {
-                    agregarFruta(fruta.id);
-                });
-            }
-        });
-        
+    .then((data) => listaFrutas = data)
+    .catch((error) => console.error("Error al cargar frutas:", error));       
 }
 
+function agregarEventoFruta() {
+    let imagenes = Array.from(document.querySelectorAll('.fruta img'));
+    imagenes.forEach(elemento => {
+        elemento.addEventListener('click', agregarFruta(elemento.id));
+    })
+}
 
 function agregarFruta(id) {
     const inputFruta = document.getElementById(`input-${id}`);
@@ -82,8 +58,6 @@ function buscarPorId(id) {
     }
     return fruta;
 }
-
-
 
 function encontrarFrutaAgregada(id) {
     return frutasKilos.findIndex(fruta=>fruta.id == id);
@@ -222,19 +196,9 @@ function finalizarPedido() {
     compraFinalizada = true;
 }
 
-function mostrarPeculiaridades() {
+/* function mostrarPeculiaridades() {
     const ventanaEmergente = document.getElementById("ventanaEmergente");  
     const contenidoVentana = document.getElementById("contenidoVentanaEmergentes");
-
-    const frutasResumen = frutasKilos.map(fruta => {
-        return `${fruta.nombre}: ${fruta.mensaje}`;
-    }).join("<br>");
-
-    contenidoVentana.innerHTML = frutasResumen; 
-    ventanaEmergente.style.display = "block"; 
-
-    document.getElementById("cerrarModal").onclick = function() {
-        ventanaEmergente.style.display = "none";
-    };
 }
 
+ */
