@@ -1,40 +1,38 @@
 var listaFrutas = [];
-const compra = [];
+const carritoCompra = [];
 var compraFinalizada = false;
 var compraTotal = 0;
 var totalKilosPedido = 0;
 
 function cargarFrutas() {
-    
     fetch("http://localhost:3000/frutas")
     .then(response => {
         return response.json();
     })
     .then((data) => {
         listaFrutas = data;
-        console.log("Frutas cargadas correctamente");
     })
-    .catch((error) => console.error("Error al cargar frutas:", error));       
+    .catch();       
 }
 
 function agregarFruta(id) { 
-    const inputFruta = document.getElementById(`input-${id}`);
-    const kilos = parseInt(inputFruta.value);
+    const inputCantidadFrutas = document.getElementById(`input-${id}`);
+    const kilos = parseInt(inputCantidadFrutas.value);
     const fruta = buscarPorId(id);
 
     if (!isNaN(kilos) && kilos > 0) {
         let indiceFruta = encontrarFrutaAgregada(id);
         if (indiceFruta != -1) {
-            compra[indiceFruta].numKilos += kilos;
-            compra[indiceFruta].importeTotal += kilos * fruta.precioKilo;
+            carritoCompra[indiceFruta].numKilos += kilos;
+            carritoCompra[indiceFruta].importeTotal += kilos * fruta.precioKilo;
         } else {
-            let nuevaFruta = {
+            let frutaSeleccionada = {
                 "id": fruta.id,
                 "nombre": fruta.nombre, 
                 "numKilos": kilos,
                 "importeTotal": kilos * fruta.precioKilo,
             }
-            compra.push(nuevaFruta);
+            carritoCompra.push(frutaSeleccionada);
         }
         totalKilosPedido += kilos;
         compraTotal += kilos * fruta.precioKilo;
@@ -47,27 +45,27 @@ function agregarFruta(id) {
 function buscarPorId(id) {
     const fruta = listaFrutas.find(fruta => fruta.id == id);
     if (!fruta) {
-        console.error("Fruta no encontrada:", id);
         return null; 
     }
     return fruta;
 }
 
 function encontrarFrutaAgregada(id) {
-    return compra.findIndex(fruta=>fruta.id == id);
+    return carritoCompra.findIndex(fruta=>fruta.id == id);
 }
 
 
 function actualizarBarraLateral(fruta, kilos) {
     let zonaLateral = document.getElementById("frutasAnadidas");
     let linea = document.createElement("p");
-    linea.innerText = `${fruta} ${kilos} kilo${kilos>1?"s":""}`;
+    linea.innerText = `- ${fruta}: ${kilos} kg`;
     zonaLateral.appendChild(linea);
     aplicarEstilos(zonaLateral, fruta);
 }
     
 function aplicarEstilos(zonaLateral, fruta) {
     let frutasAnadidas = Array.from(zonaLateral.children);
+
     frutasAnadidas.forEach (f => {
         if (f.textContent.includes(fruta)) {
             f.classList.add("resaltada");
@@ -84,7 +82,7 @@ function mostrarResumen(fecha) {
     let precioMedio = "Precio medio: " + precioMedioCalculado.toFixed(2) + " €/kg";
     let contenidoResumen = "";
 
-    compra.forEach(fruta => {
+    carritoCompra.forEach(fruta => {
         contenidoResumen += `${fruta.nombre} ---- ${fruta.numKilos} kg --- ${fruta.numKilos * buscarPorId(fruta.id).precioKilo}€ <br> `;
     });
     
@@ -96,22 +94,10 @@ function mostrarResumen(fecha) {
     compraFinalizada = true;
 }
 
-function finalizarPedido() {
-    compra.sort((a, b) => b.nombre.localeCompare(a.nombre));
-
-    const fechaCompra = new Date();
-    const fechaFormateada = fechaCompra.toLocaleDateString("es-ES");
-    const horaFormateada = fechaCompra.toLocaleTimeString("es-ES", { hour: '2-digit', minute: '2-digit' });
-
-    enviarPedido(`${fechaFormateada} ${horaFormateada}`);
-    mostrarResumen(`${fechaFormateada} ${horaFormateada}`);
-    reiniciarCompraTimeout();
-}
-
 function enviarPedido(fecha)  {
     let pedido = {
         "fecha": fecha, 
-        "productos": compra,
+        "productos": carritoCompra,
     }
     fetch("http://localhost:3000/pedidos", {
         method: "POST",
@@ -121,14 +107,11 @@ function enviarPedido(fecha)  {
         body: JSON.stringify(pedido)
     })
     .then(response => response.json())
-    .then(data => {
-        console.log("Pedido almacenado con éxito:", data);
-    })
-    .catch(error => console.error("Error al almacenar el pedido:", error));    
+    .catch();    
 }
 
 function reiniciarCompra() {
-    compra.length = 0;
+    carritoCompra.length = 0;
     dineroGastado = 0;
 
     document.getElementById("resumenCompra").innerHTML = "";
@@ -137,33 +120,48 @@ function reiniciarCompra() {
 
     const frutasAnadidas = document.getElementById('frutasAnadidas');
     frutasAnadidas.innerHTML = '';
-
-
 }
 
 function reiniciarCompraTimeout() {
-    let valorVentana = abrirVentanaEmergente();
+    let ventanaEmergente = abrirVentanaEmergente();
+
     setTimeout(() => {
         reiniciarCompra();
-        valorVentana.close();
+        ventanaEmergente.close();
     }, 10000); 
 }
 
 function abrirVentanaEmergente() {
     let ventana = window.open("", "Ventana Emergente Frutería", "width=600, height= 600, menubar=No, scrollbar=No");
-    ventana.document.write(abrirMensaje());
+
+    ventana.document.write(obtenerMensajeTemporada());
+    
     return ventana;
 }
 
-function abrirMensaje() {
+function obtenerMensajeTemporada() {
     let mensaje = "";
-    compra.forEach(m => {
+
+    carritoCompra.forEach(m => {
         let fruta = buscarPorId(m.id);
         if (fruta.temporada == "verano") {
-            mensaje += `${fruta.nombre}: de verano, de proximidad: ${fruta.proximidad ? "si " : "no "}, y están recogidas en ${fruta.region}`;
+            mensaje += `${fruta.nombre}: de verano, de proximidad: ${fruta.proximidad ? "si " : "no "}, y están recogidas en ${fruta.region}<br>`;
         } else {
-            mensaje += `${fruta.nombre}: de invierno, recomendable refrigerar: ${fruta.refrigerar ? "si " : "no "}`;
+            mensaje += `${fruta.nombre}: de invierno, recomendable refrigerar: ${fruta.refrigerar ? "si <br>" : "no <br>"}`;
         }
     })    
     return mensaje;
 }
+
+function finalizarPedido() {
+    carritoCompra.sort((a, b) => b.nombre.localeCompare(a.nombre));
+
+    const fechaPedido = new Date();
+    const fechaFormateada = fechaPedido.toLocaleDateString("es-ES");
+    const horaFormateada = fechaPedido.toLocaleTimeString("es-ES", { hour: '2-digit', minute: '2-digit' });
+
+    enviarPedido(`${fechaFormateada} ${horaFormateada}`);
+    mostrarResumen(`${fechaFormateada} ${horaFormateada}`);
+    reiniciarCompraTimeout();
+}
+

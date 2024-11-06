@@ -1,7 +1,7 @@
 {
   "frutas": [
     {
-      "id": 1,
+      "id": "1",
       "nombre": "pitahaya",
       "precioKilo": 9.15,
       "temporada": "verano",
@@ -9,14 +9,14 @@
       "region": "Sudamérica"
     },
     {
-      "id": 2,
+      "id": "2",
       "nombre": "chirimoya",
       "precioKilo": 8.6,
       "temporada": "invierno",
       "refrigerar": true
     },
     {
-      "id": 3,
+      "id": "3",
       "nombre": "longan",
       "precioKilo": 7.42,
       "temporada": "verano",
@@ -24,7 +24,7 @@
       "region": "Asia"
     },
     {
-      "id": 4,
+      "id": "4",
       "nombre": "carambola",
       "precioKilo": 6.7,
       "temporada": "verano",
@@ -32,7 +32,7 @@
       "region": "Sudeste Asiático"
     },
     {
-      "id": 5,
+      "id": "5",
       "nombre": "kiwano",
       "precioKilo": 8.99,
       "temporada": "verano",
@@ -40,7 +40,7 @@
       "region": "África"
     },
     {
-      "id": 6,
+      "id": "6",
       "nombre": "maracuya",
       "precioKilo": 5.22,
       "temporada": "verano",
@@ -48,7 +48,7 @@
       "region": "Sudamérica"
     },
     {
-      "id": 7,
+      "id": "7",
       "nombre": "lichi",
       "precioKilo": 7.66,
       "temporada": "verano",
@@ -56,7 +56,7 @@
       "region": "Asia"
     },
     {
-      "id": 8,
+      "id": "8",
       "nombre": "physalis",
       "precioKilo": 10.32,
       "temporada": "verano",
@@ -64,14 +64,14 @@
       "region": "Sudamérica"
     },
     {
-      "id": 9,
+      "id": "9",
       "nombre": "kumquat",
       "precioKilo": 8.2,
       "temporada": "invierno",
       "refrigerar": false
     },
     {
-      "id": 10,
+      "id": "10",
       "nombre": "pawpaw",
       "precioKilo": 10.66,
       "temporada": "invierno",
@@ -79,147 +79,5 @@
     }
   ],
   "pedidos": [
-    {
-      "id": 1,
-      "fecha": "01-2020",
-      "productos": [
-        {
-          "idFruta": 7,
-          "importeTotal": 45.78,
-          "numKilos": 5
-        },
-        {
-          "idFruta": 1,
-          "importeTotal": 37.23,
-          "numKilos": 3
-        }
-      ]
-    },
-    {
-      "id": "9ceb",
-      "fecha": "6/11/2024 13:21",
-      "productos": [
-        {
-          "id": 1,
-          "nombre": "pitahaya",
-          "numKilos": 4,
-          "importeTotal": 36.6
-        },
-        {
-          "id": 2,
-          "nombre": "chirimoya",
-          "numKilos": 1,
-          "importeTotal": 8.6
-        }
-      ]
-    },
-    {
-      "id": "c398",
-      "fecha": "6/11/2024 13:28",
-      "productos": [
-        {
-          "id": 1,
-          "nombre": "pitahaya",
-          "numKilos": 4,
-          "importeTotal": 36.6
-        },
-        {
-          "id": 2,
-          "nombre": "chirimoya",
-          "numKilos": 1,
-          "importeTotal": 8.6
-        }
-      ]
-    },
-    {
-      "id": "6268",
-      "fecha": "6/11/2024 13:28",
-      "productos": [
-        {
-          "id": 1,
-          "nombre": "pitahaya",
-          "numKilos": 4,
-          "importeTotal": 36.6
-        },
-        {
-          "id": 2,
-          "nombre": "chirimoya",
-          "numKilos": 1,
-          "importeTotal": 8.6
-        }
-      ]
-    },
-    {
-      "id": "dda5",
-      "fecha": "6/11/2024 14:00",
-      "productos": [
-        {
-          "id": 1,
-          "nombre": "pitahaya",
-          "numKilos": 4,
-          "importeTotal": 36.6
-        },
-        {
-          "id": 2,
-          "nombre": "chirimoya",
-          "numKilos": 1,
-          "importeTotal": 8.6
-        }
-      ]
-    },
-    {
-      "id": "8673",
-      "fecha": "6/11/2024 14:02",
-      "productos": [
-        {
-          "id": 1,
-          "nombre": "pitahaya",
-          "numKilos": 4,
-          "importeTotal": 36.6
-        },
-        {
-          "id": 2,
-          "nombre": "chirimoya",
-          "numKilos": 1,
-          "importeTotal": 8.6
-        }
-      ]
-    },
-    {
-      "id": "9d60",
-      "fecha": "6/11/2024 14:04",
-      "productos": [
-        {
-          "id": 1,
-          "nombre": "pitahaya",
-          "numKilos": 4,
-          "importeTotal": 36.6
-        },
-        {
-          "id": 2,
-          "nombre": "chirimoya",
-          "numKilos": 1,
-          "importeTotal": 8.6
-        }
-      ]
-    },
-    {
-      "id": "a6eb",
-      "fecha": "6/11/2024 14:05",
-      "productos": [
-        {
-          "id": 1,
-          "nombre": "pitahaya",
-          "numKilos": 4,
-          "importeTotal": 36.6
-        },
-        {
-          "id": 2,
-          "nombre": "chirimoya",
-          "numKilos": 1,
-          "importeTotal": 8.6
-        }
-      ]
-    }
   ]
 }
