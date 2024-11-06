@@ -37,8 +37,8 @@ function agregarFruta(id) {
                 "mensaje": fruta.mensaje
             }
             compra.push(nuevaFruta);
-            actualizarBarraLateral(fruta.nombre, kilos);
         }
+        actualizarBarraLateral(fruta.nombre, kilos);
     } else {        
         alert("Por favor, ingrese un número de kilos válido");
     }
@@ -108,13 +108,23 @@ function reiniciarCompraTimeout() {
 
 
 function actualizarBarraLateral(fruta, kilos) {
-    let zonaLateral = document.getElementById("zonaLateral");
+    let zonaLateral = document.getElementById("frutasAnadidas");
     let linea = document.createElement("p");
     linea.innerText = `${fruta} ${kilos} kilo${kilos>1?"s":""}`;
     zonaLateral.appendChild(linea);
-
+    aplicarEstilos(zonaLateral, fruta);
     }
     
+function aplicarEstilos(zonaLateral, fruta) {
+    let frutasAnadidas = Array.from(zonaLateral.children);
+    frutasAnadidas.forEach (f => {
+        if (f.textContent.includes(fruta)) {
+            f.classList.add("resaltada");
+        } else {
+            f.classList.remove("resaltada");
+        }
+    })
+}
 function finalizarPedido() {
     compra.sort((a, b) => b.nombre.localeCompare(a.nombre));
 
