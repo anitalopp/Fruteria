@@ -1,48 +1,42 @@
-var listaFrutas;
-const frutasKilos = [];
+var listaFrutas = [];
+const compra = [];
 var compraFinalizada = false;
 const frutasAñadidas = document.getElementById('frutasAñadidas');
-var ultimaFrutaAgregada = null; 
+var compraTotal = 0;
 
 function cargarFrutas() {
-    console.log("Frutas cargadas correctamente")
+    
     fetch("http://localhost:3000/frutas")
     .then(response => {
-        agregarEventoFruta();
         return response.json();
     })
-    .then((data) => listaFrutas = data)
+    .then((data) => {
+        listaFrutas = data;
+        console.log("Frutas cargadas correctamente");
+    })
     .catch((error) => console.error("Error al cargar frutas:", error));       
 }
 
-function agregarEventoFruta() {
-    let imagenes = Array.from(document.querySelectorAll('.fruta img'));
-    imagenes.forEach(elemento => {
-        elemento.addEventListener('click', agregarFruta(elemento.id));
-    })
-}
-
-function agregarFruta(id) {
+function agregarFruta(id) { 
     const inputFruta = document.getElementById(`input-${id}`);
     const kilos = parseInt(inputFruta.value);
     const fruta = buscarPorId(id);
 
     if (!isNaN(kilos) && kilos > 0) {
-        let indiceFruta = encontrarFrutaAgregada(idF);
+        let indiceFruta = encontrarFrutaAgregada(id);
         if (indiceFruta != -1) {
-            frutasKilos[indiceFruta].numKilos += kilos;
-            frutasKilos[indiceFruta].importeTotal += kilos * fruta.precioKilo;
+            compra[indiceFruta].numKilos += kilos;
+            compra[indiceFruta].importeTotal += kilos * fruta.precioKilo;
         } else {
-            frutasKilos.push(
-                {
-                    "id": fruta.id,
-                    "nombre": fruta.nombre, 
-                    "numKilos": kilos,
-                    "importeTotal": kilos * fruta.precioKilo,
-                    "temporada": fruta.temporada,
-                    "mensaje": fruta.mensaje
-                }
-            );
+            let nuevaFruta = {
+                "id": fruta.id,
+                "nombre": fruta.nombre, 
+                "numKilos": kilos,
+                "importeTotal": kilos * fruta.precioKilo,
+                "temporada": fruta.temporada,
+                "mensaje": fruta.mensaje
+            }
+            compra.push(nuevaFruta);
             actualizarBarraLateral(fruta.nombre, kilos);
         }
     } else {        
@@ -60,7 +54,7 @@ function buscarPorId(id) {
 }
 
 function encontrarFrutaAgregada(id) {
-    return frutasKilos.findIndex(fruta=>fruta.id == id);
+    return compra.findIndex(fruta=>fruta.id == id);
 }
 
 
@@ -73,7 +67,7 @@ function mostrarResumen() {
     let totalKilos = 0;
     let dineroGastado = 0;
 
-    frutasKilos.forEach(fruta => {
+    compra.forEach(fruta => {
         contenidoResumen += `${fruta.nombre} ---- ${fruta.numKilos} kg<br>`;
         totalKilos += fruta.numKilos; 
         dineroGastado += fruta.importeTotal; 
@@ -94,7 +88,7 @@ function mostrarResumen() {
 }
 
 function reiniciarCompra() {
-    frutasKilos.length = 0;
+    compra.length = 0;
     dineroGastado = 0;
 
     document.getElementById("resumenCompra").innerHTML = "";
@@ -114,40 +108,19 @@ function reiniciarCompraTimeout() {
 
 
 function actualizarBarraLateral(fruta, kilos) {
-    if (kilos > 0) {
-        const frutaExistente = frutasAñadidas.querySelector(`.fruta-item[data-fruta="${fruta}"]`);
-        
-        if (frutaExistente) {
-            const cantidadActual = parseInt(frutaExistente.textContent.split(': ')[1]);
-            frutaExistente.textContent = `${fruta}: ${cantidadActual + kilos} kg`;
-        } else {
-            const nuevaFruta = document.createElement('div');
-            nuevaFruta.classList.add('fruta-item'); 
-            nuevaFruta.textContent = `${fruta}: ${kilos} kg`; 
-            nuevaFruta.setAttribute('data-fruta', fruta);
-            frutasAñadidas.appendChild(nuevaFruta);
-        }
+    let zonaLateral = document.getElementById("zonaLateral");
+    let linea = document.createElement("p");
+    linea.innerText = `${fruta} ${kilos} kilo${kilos>1?"s":""}`;
+    zonaLateral.appendChild(linea);
 
-        if (ultimaFrutaAgregada) {
-            ultimaFrutaAgregada.classList.remove('subrayado');
-        }
-        
-        const frutasPrevias = frutasAñadidas.querySelectorAll(`.fruta-item[data-fruta="${fruta}"]`);
-        frutasPrevias.forEach(frutaItem => {
-            frutaItem.classList.add('subrayado'); 
-        });
-        
-
-        ultimaFrutaAgregada = frutasAñadidas.lastElementChild; 
     }
-}
     
 function finalizarPedido() {
-    frutasKilos.sort((a, b) => b.nombre.localeCompare(a.nombre));
+    compra.sort((a, b) => b.nombre.localeCompare(a.nombre));
 
     let totalKilos = 0;
     let precioTotal = 0;
-    frutasKilos.forEach(fruta => {
+    compra.forEach(fruta => {
         totalKilos += fruta.numKilos;
         precioTotal += fruta.importeTotal;
     });
@@ -160,7 +133,7 @@ function finalizarPedido() {
 
     const pedido = {
         fecha: `${fechaFormateada} ${horaFormateada}`,
-        frutas: frutasKilos.map(fruta => ({
+        frutas: compra.map(fruta => ({
             id: fruta.id,
             kilos: fruta.numKilos,
             precioPorKilo: fruta.precioKilo,
@@ -186,7 +159,7 @@ function finalizarPedido() {
     const resumenCompra = document.getElementById("resumenCompra");
     resumenCompra.innerHTML = `Fecha de compra: ${fechaFormateada} ${horaFormateada}<br><br>`;
 
-    frutasKilos.forEach(fruta => {
+    compra.forEach(fruta => {
         resumenCompra.innerHTML += `${fruta.nombre} ---- ${fruta.numKilos} kilos --- ${fruta.precioKilo.toFixed(2)}€ --- ${fruta.importeTotal.toFixed(2)}€<br>`;
     });
 
