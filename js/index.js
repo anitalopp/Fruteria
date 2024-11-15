@@ -61,6 +61,8 @@ function actualizarBarraLateral(fruta, kilos) {
     linea.innerText = `- ${fruta}: ${kilos} kg`;
     zonaLateral.appendChild(linea);
     aplicarEstilos(zonaLateral, fruta);
+    zonaLateral.scrollTop = zonaLateral.scrollHeight;
+
 }
     
 function aplicarEstilos(zonaLateral, fruta) {
