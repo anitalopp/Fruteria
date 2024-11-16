@@ -167,3 +167,26 @@ function finalizarPedido() {
     reiniciarCompraTimeout();
 }
 
+/* CAMBIOS PARA EL PUNTO 1.3.6 */
+function gestionarCodigoCliente() {
+    var siTarjeta = document.getElementById('si-tarjeta');
+    var noTarjeta = document.getElementById('no-tarjeta');
+
+    if (siTarjeta.checked) {
+        mostrarCodigoCliente();
+    } else if (noTarjeta.checked) {
+        ocultarCodigoCliente();
+    }
+}
+
+function mostrarCodigoCliente() {
+    document.getElementById('codigoCliente').style.display = 'block';
+}
+
+function ocultarCodigoCliente() {
+    document.getElementById('codigoCliente').style.display = 'none';
+}
+
+document.getElementById('si-tarjeta').addEventListener('change', gestionarCodigoCliente);
+document.getElementById('no-tarjeta').addEventListener('change', gestionarCodigoCliente);
+

@@ -106,6 +106,45 @@
             <h2>FRUTAS AÑADIDAS</h2>
             <div id="frutasAnadidas"></div>
         </div>
+        <div id="zonaInferior">
+            <form action="#" method="post"> <!-- revisar el # -->
+                <label for="nombre">Nombre:</label><br>
+                <input type="text" id="nombre" name="nombre"><br><br>
+                
+                <label for="apellidos">Apellidos:</label><br>
+                <input type="text" id="apellidos" name="apellidos" ><br><br>
+                
+                <label for="direccion">Dirección:</label><br>
+                <input type="text" id="direccion" name="direccion"><br><br>
+                
+                <label for="correo">Correo electrónico:</label><br>
+                <input type="email" id="correo" name="correo"><br><br>
+
+                <fieldset>
+                    <label>Método de pago:</label><br>
+                    <label for="tarjeta">Tarjeta</label>
+                    <input type="radio" id="tarjeta" name="pago" value="tarjeta"><br><br>
+                    <label for="entrega">Cuando se entregue</label>
+                    <input type="radio" id="entrega" name="pago" value="entrega"><br><br>
+                </fieldset>
+                
+                <fieldset>
+                    <label for="utiliza-tarjeta">¿Tienes tarjeta de cliente?</label><br>
+                    <label for="si-tarjeta" id="si">Sí</label>
+                    <input type="radio" id="si-tarjeta" name="tarjeta-cliente" value="si">
+                    <label for="no-tarjeta" id="no">No</label>
+                    <input type="radio" id="no-tarjeta" name="tarjeta-cliente" value="no"><br><br>
+                    
+                    <div id="codigoCliente">
+                        <label for="codigo-cliente">Código Cliente:</label>
+                        <input type="text" id="codigo">
+                    </div>
+                </fieldset>
+                
+                <input type="submit" value="Realizar Pedido">
+                <input type="reset" value="Limpiar Formulario">
+            </form>
+        </div>
     </div>  
     <script src="../js/index.js"></script>
 </body>
