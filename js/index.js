@@ -77,7 +77,7 @@ function aplicarEstilos(zonaLateral, fruta) {
     })
 }
 
-function mostrarResumen(fecha) {
+/* function mostrarResumen(fecha) {
     const resumenCompra = document.getElementById("resumenCompra");
     let totalPrecio = "Precio total: " + compraTotal.toFixed(2) + " €";
     let precioMedioCalculado = compraTotal / (totalKilosPedido != 0 ? totalKilosPedido : 1);
@@ -94,7 +94,7 @@ function mostrarResumen(fecha) {
     resumenCompra.innerHTML += `<br>${precioMedio}`;
 
     compraFinalizada = true;
-}
+} */
 
 function enviarPedido(fecha)  {
     let pedido = {
