@@ -23,7 +23,11 @@ body {
     display: flex;
     width: 100%;
     max-width: 1200px;
+<<<<<<< HEAD
     flex: 0 0 65%;
+=======
+    flex: 0 0 70%;
+>>>>>>> c3d2f78e15eeb8ec091b58a0e6ec58248f534c57
     overflow: hidden;
 }
 
@@ -112,16 +116,24 @@ form {
 }
 
 #frutasAnadidas {
+<<<<<<< HEAD
     height: 200px;        
     overflow-y: auto;     
+=======
+    height: 200px;         /* Ajusta la altura según lo que necesites */
+    overflow-y: auto;      /* Habilita el desplazamiento vertical */
+>>>>>>> c3d2f78e15eeb8ec091b58a0e6ec58248f534c57
     border: 1px solid #ccc;
     padding: 10px;
 }
 
 .resaltada {
     background-color: lightblue;
+<<<<<<< HEAD
 }
 
 #codigoCliente {
     display: none;
+=======
+>>>>>>> c3d2f78e15eeb8ec091b58a0e6ec58248f534c57
 }
