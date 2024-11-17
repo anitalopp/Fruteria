@@ -7,145 +7,148 @@
     <link rel="stylesheet" href="../estilos/estilos.css">
 </head>
 <body onload="cargarFrutas();">
-    <div class="contenedor">
-        <div class="contenidoPrincipal">
-            <header>
-                <h1 class="titulo">FRUTERÍA ANA LÓPEZ</h1>
-            </header>
-            <main>
-                <div class="contenedorFrutas">
-                    <div class="fruta">
-                        <img id="1" onclick="agregarFruta(1)" src="../imagenes/pitahaya.jpeg" alt="Pitahaya">
-                        <div class="infoFruta">
-                            <span class="nombreFruta">Pitahaya</span>
-                            <span class="precioFruta">9.15 EUR/kg</span>
+    <div id="contenedor">
+        <div id="zonaSuperior">
+            <section class="contenedorPrincipal">
+                <header>
+                    <h1 class="titulo">FRUTERÍA ANA LÓPEZ</h1>
+                </header>
+                <main>
+                    <section class="contenedorFrutas">
+                        <div class="fruta">
+                            <img id="1" onclick="agregarFruta(1)" src="../imagenes/pitahaya.jpeg" alt="Pitahaya">
+                            <div class="infoFruta">
+                                <span class="nombreFruta">Pitahaya</span>
+                                <span class="precioFruta">9.15 EUR/kg</span>
+                            </div>
+                            <input type="text" id="input-1" class="inputKilos" placeholder="kilos">
                         </div>
-                        <input type="text" id="input-1" class="inputKilos" placeholder="kilos">
-                    </div>
-                    <div class="fruta">
-                        <img id="2" onclick="agregarFruta(2)" src="../imagenes/chirimoya.jpeg" alt="Chirimoya">
-                        <div class="infoFruta">
-                            <span class="nombreFruta">Chirimoya</span>
-                            <span class="precioFruta">8.60 EUR/kg</span>
+                        <div class="fruta">
+                            <img id="2" onclick="agregarFruta(2)" src="../imagenes/chirimoya.jpeg" alt="Chirimoya">
+                            <div class="infoFruta">
+                                <span class="nombreFruta">Chirimoya</span>
+                                <span class="precioFruta">8.60 EUR/kg</span>
+                            </div>
+                            <input type="text" id="input-2" class="inputKilos" placeholder="kilos">
                         </div>
-                        <input type="text" id="input-2" class="inputKilos" placeholder="kilos">
-                    </div>
-                    <div class="fruta">
-                        <img id="3" onclick="agregarFruta(3)" src="../imagenes/longan.jpeg" alt="Longan">
-                        <div class="infoFruta">
-                            <span class="nombreFruta">Longan</span>
-                            <span class="precioFruta">7.42 EUR/kg</span>
+                        <div class="fruta">
+                            <img id="3" onclick="agregarFruta(3)" src="../imagenes/longan.jpeg" alt="Longan">
+                            <div class="infoFruta">
+                                <span class="nombreFruta">Longan</span>
+                                <span class="precioFruta">7.42 EUR/kg</span>
+                            </div>
+                            <input type="text" id="input-3" class="inputKilos" placeholder="kilos">
                         </div>
-                        <input type="text" id="input-3" class="inputKilos" placeholder="kilos">
-                    </div>
-                    <div class="fruta">
-                        <img id="4" onclick="agregarFruta(4)" src="../imagenes/carambola.jpeg" alt="Carambola">
-                        <div class="infoFruta">
-                            <span class="nombreFruta">Carambola</span>
-                            <span class="precioFruta">6.70 EUR/kg</span>
+                        <div class="fruta">
+                            <img id="4" onclick="agregarFruta(4)" src="../imagenes/carambola.jpeg" alt="Carambola">
+                            <div class="infoFruta">
+                                <span class="nombreFruta">Carambola</span>
+                                <span class="precioFruta">6.70 EUR/kg</span>
+                            </div>
+                            <input type="text" id="input-4" class="inputKilos" placeholder="kilos">
                         </div>
-                        <input type="text" id="input-4" class="inputKilos" placeholder="kilos">
-                    </div>
-                    <div class="fruta">
-                        <img id="5" onclick="agregarFruta(5)" src="../imagenes/kiwano.jpeg" alt="Kiwano">
-                        <div class="infoFruta">
-                            <span class="nombreFruta">Kiwano</span>
-                            <span class="precioFruta">8.99 EUR/kg</span>
+                        <div class="fruta">
+                            <img id="5" onclick="agregarFruta(5)" src="../imagenes/kiwano.jpeg" alt="Kiwano">
+                            <div class="infoFruta">
+                                <span class="nombreFruta">Kiwano</span>
+                                <span class="precioFruta">8.99 EUR/kg</span>
+                            </div>
+                            <input type="text" id="input-5" class="inputKilos" placeholder="kilos">
                         </div>
-                        <input type="text" id="input-5" class="inputKilos" placeholder="kilos">
-                    </div>
-                    <div class="fruta">
-                        <img id="6" onclick="agregarFruta(6)" src="../imagenes/maracuya.jpeg" alt="Maracuyá">
-                        <div class="infoFruta">
-                            <span class="nombreFruta">Maracuyá</span>
-                            <span class="precioFruta">5.22 EUR/kg</span>
+                        <div class="fruta">
+                            <img id="6" onclick="agregarFruta(6)" src="../imagenes/maracuya.jpeg" alt="Maracuyá">
+                            <div class="infoFruta">
+                                <span class="nombreFruta">Maracuyá</span>
+                                <span class="precioFruta">5.22 EUR/kg</span>
+                            </div>
+                            <input type="text" id="input-6" class="inputKilos" placeholder="kilos">
                         </div>
-                        <input type="text" id="input-6" class="inputKilos" placeholder="kilos">
-                    </div>
-                    <div class="fruta">
-                        <img id="7" onclick="agregarFruta(7)" src="../imagenes/lichi.jpeg" alt="Lichi">
-                        <div class="infoFruta">
-                            <span class="nombreFruta">Lichi</span>
-                            <span class="precioFruta">7.66 EUR/kg</span>
+                        <div class="fruta">
+                            <img id="7" onclick="agregarFruta(7)" src="../imagenes/lichi.jpeg" alt="Lichi">
+                            <div class="infoFruta">
+                                <span class="nombreFruta">Lichi</span>
+                                <span class="precioFruta">7.66 EUR/kg</span>
+                            </div>
+                            <input type="text" id="input-7" class="inputKilos" placeholder="kilos">
                         </div>
-                        <input type="text" id="input-7" class="inputKilos" placeholder="kilos">
-                    </div>
-                    <div class="fruta">
-                        <img id="8" onclick="agregarFruta(8)" src="../imagenes/physalis.jpeg" alt="Physalis">
-                        <div class="infoFruta">
-                            <span class="nombreFruta">Physalis</span>
-                            <span class="precioFruta">10.32 EUR/kg</span>
+                        <div class="fruta">
+                            <img id="8" onclick="agregarFruta(8)" src="../imagenes/physalis.jpeg" alt="Physalis">
+                            <div class="infoFruta">
+                                <span class="nombreFruta">Physalis</span>
+                                <span class="precioFruta">10.32 EUR/kg</span>
+                            </div>
+                            <input type="text" id="input-8" class="inputKilos" placeholder="kilos">
                         </div>
-                        <input type="text" id="input-8" class="inputKilos" placeholder="kilos">
-                    </div>
-                    <div class="fruta">
-                        <img id="9" onclick="agregarFruta(9)" src="../imagenes/kumquat.jpeg" alt="Kumquat">
-                        <div class="infoFruta">
-                            <span class="nombreFruta">Kumquat</span>
-                            <span class="precioFruta">8.20 EUR/kg</span>
+                        <div class="fruta">
+                            <img id="9" onclick="agregarFruta(9)" src="../imagenes/kumquat.jpeg" alt="Kumquat">
+                            <div class="infoFruta">
+                                <span class="nombreFruta">Kumquat</span>
+                                <span class="precioFruta">8.20 EUR/kg</span>
+                            </div>
+                            <input type="text" id="input-9" class="inputKilos" placeholder="kilos">
                         </div>
-                        <input type="text" id="input-9" class="inputKilos" placeholder="kilos">
-                    </div>
-                    <div class="fruta">
-                        <img id="10" onclick="agregarFruta(10)" src="../imagenes/pawpaw.jpeg" alt="PawPaw">
-                        <div class="infoFruta">
-                            <span class="nombreFruta">PawPaw</span>
-                            <span class="precioFruta">10.66 EUR/kg</span>
+                        <div class="fruta">
+                            <img id="10" onclick="agregarFruta(10)" src="../imagenes/pawpaw.jpeg" alt="PawPaw">
+                            <div class="infoFruta">
+                                <span class="nombreFruta">PawPaw</span>
+                                <span class="precioFruta">10.66 EUR/kg</span>
+                            </div>
+                            <input type="text" id="input-10" class="inputKilos" placeholder="kilos">
                         </div>
-                        <input type="text" id="input-10" class="inputKilos" placeholder="kilos">
-                    </div>
-                </div>
-                <div id="total" class="total">
-                    <h2>RESUMEN DE LA COMPRA</h2>
-                    <div id="resumenCompra"></div>
-                    <button id="terminarCompra" onclick="finalizarPedido();">FINALIZAR PEDIDOS</button> 
-                </div>
-            </main>
-        </div>
-        <div id="zonaLateral">
-            <h2>FRUTAS AÑADIDAS</h2>
-            <div id="frutasAnadidas"></div>
-        </div>
-    </div>  
-    <div id="zonaInferior">
-        <form action="#" method="post"> <!-- revisar el # -->
-            <label for="nombre">Nombre:</label><br>
-            <input type="text" id="nombre" name="nombre"><br><br>
-            
-            <label for="apellidos">Apellidos:</label><br>
-            <input type="text" id="apellidos" name="apellidos" ><br><br>
-            
-            <label for="direccion">Dirección:</label><br>
-            <input type="text" id="direccion" name="direccion"><br><br>
-            
-            <label for="correo">Correo electrónico:</label><br>
-            <input type="email" id="correo" name="correo"><br><br>
-
-            <fieldset>
-                <label>Método de pago:</label><br>
-                <label for="tarjeta">Tarjeta</label>
-                <input type="radio" id="tarjeta" name="pago" value="tarjeta"><br><br>
-                <label for="entrega">Cuando se entregue</label>
-                <input type="radio" id="entrega" name="pago" value="entrega"><br><br>
-            </fieldset>
-            
-            <fieldset>
-                <label for="utiliza-tarjeta">¿Tienes tarjeta de cliente?</label><br>
-                <label for="si-tarjeta" id="si">Sí</label>
-                <input type="radio" id="si-tarjeta" name="tarjeta-cliente" value="si">
-                <label for="no-tarjeta" id="no">No</label>
-                <input type="radio" id="no-tarjeta" name="tarjeta-cliente" value="no"><br><br>
+                    </section>
+                    <section id="total" class="total">
+                        <h2>RESUMEN DE LA COMPRA</h2>
+                        <div id="resumenCompra"></div>
+                        <button id="terminarCompra" onclick="finalizarPedido();">FINALIZAR PEDIDOS</button> 
+                    </section>
+                </main>
+            </section>
+            <section id="zonaLateral">
+                <h2>FRUTAS AÑADIDAS</h2>
+                <div id="frutasAnadidas"></div>
+            </section>
+        </div>  
+        <div id="zonaInferior">
+            <form action="#" method="post"> <!-- revisar el # -->
+                <label for="nombre">Nombre:</label><br>
+                <input type="text" id="nombre" name="nombre"><br>
                 
-                <div id="codigoCliente">
-                    <label for="codigo-cliente">Código Cliente:</label>
-                    <input type="text" id="codigo">
-                </div>
-            </fieldset>
-            
-            <input type="submit" value="Realizar Pedido">
-            <input type="reset" value="Limpiar Formulario">
-        </form>
+                <label for="apellidos">Apellidos:</label><br>
+                <input type="text" id="apellidos" name="apellidos" ><br>
+                
+                <label for="direccion">Dirección:</label><br>
+                <input type="text" id="direccion" name="direccion"><br>
+                
+                <label for="correo">Correo electrónico:</label><br>
+                <input type="email" id="correo" name="correo"><br>
+    
+                <fieldset>
+                    <label>Método de pago:</label><br>
+                    <label for="tarjeta">Tarjeta</label>
+                    <input type="radio" id="tarjeta" name="pago" value="tarjeta"><br>
+                    <label for="entrega">Cuando se entregue</label>
+                    <input type="radio" id="entrega" name="pago" value="entrega"><br>
+                </fieldset>
+                
+                <fieldset>
+                    <label for="utiliza-tarjeta">¿Tienes tarjeta de cliente?</label>
+                    <label for="si-tarjeta" id="si">Sí</label>
+                    <input type="radio" id="si-tarjeta" name="tarjeta-cliente" value="si">
+                    <label for="no-tarjeta" id="no">No</label>
+                    <input type="radio" id="no-tarjeta" name="tarjeta-cliente" value="no"><br>
+                    
+                    <div id="codigoCliente">
+                        <label for="codigo-cliente">Código Cliente:</label>
+                        <input type="text" id="codigo">
+                    </div>
+                </fieldset>
+                
+                <input type="submit" value="Realizar Pedido">
+                <input type="reset" value="Limpiar Formulario">
+            </form>
+        </div>
     </div>
+    
     <script src="../js/index.js"></script>
 </body>
 </html>
