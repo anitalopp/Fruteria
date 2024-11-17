@@ -104,37 +104,37 @@
             </section>
         </div>  
         <div id="zonaInferior">
-            <form action="#" method="post"> <!-- revisar el # -->
+            <form action="#" method="post" id="formulario"> <!-- revisar el # -->
                 <label for="nombre">Nombre:</label><br>
-                <input type="text" id="nombre" name="nombre"><br>
+                <input type="text" id="nombre" name="nombre" required pattern="^[a-zA-Z]{4,15}$"><br>
                 
                 <label for="apellidos">Apellidos:</label><br>
-                <input type="text" id="apellidos" name="apellidos" ><br>
+                <input type="text" id="apellidos" name="apellidos" required><br>
                 
                 <label for="direccion">Dirección:</label><br>
-                <input type="text" id="direccion" name="direccion"><br>
+                <input type="text" id="direccion" name="direccion" required><br>
                 
                 <label for="correo">Correo electrónico:</label><br>
-                <input type="email" id="correo" name="correo"><br>
+                <input type="email" id="correo" name="correo" required pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"><br>
     
                 <fieldset>
                     <label>Método de pago:</label><br>
                     <label for="tarjeta">Tarjeta</label>
-                    <input type="radio" id="tarjeta" name="pago" value="tarjeta"><br>
+                    <input type="radio" id="tarjeta" name="pago" value="tarjeta" required><br>
                     <label for="entrega">Cuando se entregue</label>
-                    <input type="radio" id="entrega" name="pago" value="entrega"><br>
+                    <input type="radio" id="entrega" name="pago" value="entrega" required><br>
                 </fieldset>
                 
                 <fieldset>
                     <label for="utiliza-tarjeta">¿Tienes tarjeta de cliente?</label>
                     <label for="si-tarjeta" id="si">Sí</label>
-                    <input type="radio" id="si-tarjeta" name="tarjeta-cliente" value="si">
+                    <input type="radio" id="si-tarjeta" name="tarjeta-cliente" value="si" required>
                     <label for="no-tarjeta" id="no">No</label>
-                    <input type="radio" id="no-tarjeta" name="tarjeta-cliente" value="no"><br>
+                    <input type="radio" id="no-tarjeta" name="tarjeta-cliente" value="no" required><br>
                     
                     <div id="codigoCliente">
                         <label for="codigo-cliente">Código Cliente:</label>
-                        <input type="text" id="codigo">
+                        <input type="text" id="codigo" required pattern="^[a-zA-Z]{3}\d{4}[\/\.#&]$"> 
                     </div>
                 </fieldset>
                 

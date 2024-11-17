@@ -190,3 +190,15 @@ function ocultarCodigoCliente() {
 document.getElementById('si-tarjeta').addEventListener('change', gestionarCodigoCliente);
 document.getElementById('no-tarjeta').addEventListener('change', gestionarCodigoCliente);
 
+/* CAMBIOS PARA EL PUNTO 4.4 */
+/* function recuperarCamposFormulario() {
+    document.getElementById('formulario').addEventListener("submit", alertarCamposInvalidos());
+}
+
+function alertarCamposInvalidos() {
+    var camposObligatorios = document.querySelectorAll("input[required]");
+    if (!camposObligatorios.value) {
+        alert("Completa todos los cambos obligatorios");
+    } 
+
+} */

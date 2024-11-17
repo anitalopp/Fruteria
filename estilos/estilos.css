@@ -23,7 +23,7 @@ body {
     display: flex;
     width: 100%;
     max-width: 1200px;
-    flex: 0 0 70%;
+    flex: 0 0 65%;
     overflow: hidden;
 }
 
@@ -112,12 +112,16 @@ form {
 }
 
 #frutasAnadidas {
-    height: 200px;         /* Ajusta la altura según lo que necesites */
-    overflow-y: auto;      /* Habilita el desplazamiento vertical */
+    height: 200px;        
+    overflow-y: auto;     
     border: 1px solid #ccc;
     padding: 10px;
 }
 
 .resaltada {
     background-color: lightblue;
+}
+
+#codigoCliente {
+    display: none;
 }
