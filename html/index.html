@@ -96,14 +96,6 @@
                             <input type="text" id="input-10" class="inputKilos" placeholder="kilos">
                         </div>
                     </section>
-<<<<<<< HEAD
-=======
-                    <section id="total" class="total">
-                        <h2>RESUMEN DE LA COMPRA</h2>
-                        <div id="resumenCompra"></div>
-                        <button id="terminarCompra" onclick="finalizarPedido();">FINALIZAR PEDIDOS</button> 
-                    </section>
->>>>>>> c3d2f78e15eeb8ec091b58a0e6ec58248f534c57
                 </main>
             </section>
             <section id="zonaLateral">
@@ -112,77 +104,45 @@
             </section>
         </div>  
         <div id="zonaInferior">
-<<<<<<< HEAD
             <form action="#" method="post" id="formulario"> <!-- revisar el # -->
                 <label for="nombre">Nombre:</label><br>
                 <input type="text" id="nombre" name="nombre" required pattern="^[a-zA-Z]{4,15}$"><br>
-                
+
                 <label for="apellidos">Apellidos:</label><br>
                 <input type="text" id="apellidos" name="apellidos" required><br>
-                
+
                 <label for="direccion">Dirección:</label><br>
                 <input type="text" id="direccion" name="direccion" required><br>
-                
+
                 <label for="correo">Correo electrónico:</label><br>
                 <input type="email" id="correo" name="correo" required pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"><br>
-=======
-            <form action="#" method="post"> <!-- revisar el # -->
-                <label for="nombre">Nombre:</label><br>
-                <input type="text" id="nombre" name="nombre"><br>
-                
-                <label for="apellidos">Apellidos:</label><br>
-                <input type="text" id="apellidos" name="apellidos" ><br>
-                
-                <label for="direccion">Dirección:</label><br>
-                <input type="text" id="direccion" name="direccion"><br>
-                
-                <label for="correo">Correo electrónico:</label><br>
-                <input type="email" id="correo" name="correo"><br>
->>>>>>> c3d2f78e15eeb8ec091b58a0e6ec58248f534c57
-    
+
                 <fieldset>
                     <label>Método de pago:</label><br>
                     <label for="tarjeta">Tarjeta</label>
-<<<<<<< HEAD
                     <input type="radio" id="tarjeta" name="pago" value="tarjeta" required><br>
                     <label for="entrega">Cuando se entregue</label>
                     <input type="radio" id="entrega" name="pago" value="entrega" required><br>
-=======
-                    <input type="radio" id="tarjeta" name="pago" value="tarjeta"><br>
-                    <label for="entrega">Cuando se entregue</label>
-                    <input type="radio" id="entrega" name="pago" value="entrega"><br>
->>>>>>> c3d2f78e15eeb8ec091b58a0e6ec58248f534c57
                 </fieldset>
-                
+
                 <fieldset>
                     <label for="utiliza-tarjeta">¿Tienes tarjeta de cliente?</label>
                     <label for="si-tarjeta" id="si">Sí</label>
-<<<<<<< HEAD
                     <input type="radio" id="si-tarjeta" name="tarjeta-cliente" value="si" required>
                     <label for="no-tarjeta" id="no">No</label>
                     <input type="radio" id="no-tarjeta" name="tarjeta-cliente" value="no" required><br>
-                    
+
                     <div id="codigoCliente">
                         <label for="codigo-cliente">Código Cliente:</label>
                         <input type="text" id="codigo" required pattern="^[a-zA-Z]{3}\d{4}[\/\.#&]$"> 
-=======
-                    <input type="radio" id="si-tarjeta" name="tarjeta-cliente" value="si">
-                    <label for="no-tarjeta" id="no">No</label>
-                    <input type="radio" id="no-tarjeta" name="tarjeta-cliente" value="no"><br>
-                    
-                    <div id="codigoCliente">
-                        <label for="codigo-cliente">Código Cliente:</label>
-                        <input type="text" id="codigo">
->>>>>>> c3d2f78e15eeb8ec091b58a0e6ec58248f534c57
                     </div>
                 </fieldset>
-                
+
                 <input type="submit" value="Realizar Pedido">
                 <input type="reset" value="Limpiar Formulario">
             </form>
         </div>
     </div>
-    
+
     <script src="../js/index.js"></script>
 </body>
-</html>
