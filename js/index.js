@@ -294,9 +294,8 @@ document.getElementById('formulario').addEventListener('submit', function(event)
     var esValido = validarInputs(inputs); 
 
     if (esValido) {
-      alert("Formulario enviado correctamente.");
       this.submit(); 
     } else {
-      alert("Por favor, corrige los errores antes de enviar.");
+      alert("Hay datos incorrectos en el formulario");
     }
   });

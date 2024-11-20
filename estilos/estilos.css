@@ -129,3 +129,13 @@ form {
 .ocultar {
     display: none;
 }
+
+/* CAMBIOS PARA EL PUNTO 4.4.2 */
+.error {
+    color: red; 
+    border: 1px solid red;
+}
+
+.error label {
+    color: red;
+}
