@@ -131,11 +131,6 @@ form {
 }
 
 /* CAMBIOS PARA EL PUNTO 4.4.2 */
-.error {
-    color: red; 
-    border: 1px solid red;
-}
-
-.error label {
+.error-label {
     color: red;
 }

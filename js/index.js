@@ -200,7 +200,7 @@ function comprobarEstadoInicial() {
     var noTarjeta = document.getElementById('no-tarjeta');
     
     if (!siTarjeta.checked && !noTarjeta.checked) {
-        ocultarCodigoCliente();
+        ocultarCodigoCliente(); 
     }
 
     if (siTarjeta.checked) {
@@ -211,11 +211,6 @@ function comprobarEstadoInicial() {
         ocultarCodigoCliente();
     }
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-    asignarEventos();
-    comprobarEstadoInicial();
-});
 
 /* CAMBIOS PARA EL PUNTO 4.4 */
 function recuperarInputs() {
@@ -250,52 +245,71 @@ function validarInputs(inputs) {
     var codigoPattern = /^[a-zA-Z]{3}\d{4}[\/\.#&]$/;
 
     if (!nombrePattern.test(inputs.nombre)) {
-      console.log("El nombre no es válido. Debe tener entre 4 y 15 letras.");
-      valido = false;
+        console.log("El nombre no es válido. Debe tener entre 4 y 15 letras.");
+        var labelNombre = document.querySelector('label[for="nombre"]');
+        if (labelNombre) labelNombre.classList.add('error-label');
+        valido = false;
     }
 
     if (inputs.apellidos === "") {
-      console.log("Los apellidos no pueden estar vacíos.");
-      valido = false;
+        console.log("Los apellidos no pueden estar vacíos.");
+        var labelApellidos = document.querySelector('label[for="apellidos"]');
+        if (labelApellidos) labelApellidos.classList.add('error-label');
+        valido = false;
     }
 
     if (inputs.direccion === "") {
-      console.log("La dirección no puede estar vacía.");
-      valido = false;
+        console.log("La dirección no puede estar vacía.");
+        var labelDireccion = document.querySelector('label[for="direccion"]');
+        if (labelDireccion) labelDireccion.classList.add('error-label');
+        valido = false;
     }
 
     if (!correoPattern.test(inputs.correo)) {
-      console.log("El correo electrónico no es válido.");
-      valido = false;
+        console.log("El correo electrónico no es válido.");
+        var labelCorreo = document.querySelector('label[for="correo"]');
+        if (labelCorreo) labelCorreo.classList.add('error-label');
+        valido = false;
     }
 
-    if (!inputs.metodoPago) {
-      console.log("Debe seleccionar un método de pago.");
-      valido = false;
+    if (!inputs.pago) {
+        console.log("Debe seleccionar un método de pago.");
+        var labelMetodoPago = document.querySelector('label[for="tarjeta"]');
+        if (labelMetodoPago) labelMetodoPago.classList.add('error-label');
+        valido = false;
     }
 
     if (!inputs.tarjetaCliente) {
-      console.log("Debe indicar si tiene tarjeta de cliente.");
-      valido = false;
+        console.log("Debe indicar si tiene tarjeta de cliente.");
+        var labelTarjetaCliente = document.querySelector('label[for="si-tarjeta"]');
+        if (labelTarjetaCliente) labelTarjetaCliente.classList.add('error-label');
+        valido = false;
     }
 
-    if (inputs.tarjetaCliente === 'si' && !codigoPattern.test(inputs.codigo)) {
-      console.log("El código de cliente no es válido.");
-      valido = false;
+    if (inputs.tarjetaCliente === 'si' && document.getElementById('codigoCliente').classList.contains('mostrar') && !codigoPattern.test(inputs.codigo)) {
+        console.log("El código de cliente no es válido.");
+        var labelCodigo = document.querySelector('label[for="codigo"]');
+        if (labelCodigo) labelCodigo.classList.add('error-label');
+        valido = false;
     }
 
     return valido;
 }
 
-document.getElementById('formulario').addEventListener('submit', function(event) {
-    event.preventDefault(); 
+document.addEventListener('DOMContentLoaded', function() {
+    asignarEventos();
+    comprobarEstadoInicial();
 
-    var inputs = recuperarInputs(); 
-    var esValido = validarInputs(inputs); 
+    document.getElementById('formulario').addEventListener('submit', function(event) {
+        event.preventDefault(); 
 
-    if (esValido) {
-      this.submit(); 
-    } else {
-      alert("Hay datos incorrectos en el formulario");
-    }
-  });
+        var inputs = recuperarInputs(); 
+        var esValido = validarInputs(inputs); 
+
+        if (esValido) {
+          this.submit(); 
+        } else {
+          alert("Hay datos incorrectos en el formulario");
+        }
+    });
+});
