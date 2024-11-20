@@ -121,6 +121,11 @@ form {
 .resaltada {
     background-color: lightblue;
 }
-#codigoCliente {
+
+.mostrar {
+    display: block;
+}
+
+.ocultar {
     display: none;
 }

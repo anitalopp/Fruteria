@@ -168,37 +168,117 @@ function finalizarPedido() {
 }
 
 /* CAMBIOS PARA EL PUNTO 1.3.6 */
+function asignarEventos() {
+    document.getElementById('si-tarjeta').addEventListener('change', gestionarCodigoCliente);
+    document.getElementById('no-tarjeta').addEventListener('change', gestionarCodigoCliente);
+}
+
 function gestionarCodigoCliente() {
-    var siTarjeta = document.getElementById('si-tarjeta');
-    var noTarjeta = document.getElementById('no-tarjeta');
+    let siTarjeta = document.getElementById('si-tarjeta');
+    let noTarjeta = document.getElementById('no-tarjeta');
 
     if (siTarjeta.checked) {
         mostrarCodigoCliente();
-    } else if (noTarjeta.checked) {
+    }
+    else if (noTarjeta.checked) {
         ocultarCodigoCliente();
     }
 }
 
 function mostrarCodigoCliente() {
-    document.getElementById('codigoCliente').style.display = 'block';
+    document.getElementById('codigoCliente').classList.add('mostrar');
+    document.getElementById('codigoCliente').classList.remove('ocultar');
 }
 
 function ocultarCodigoCliente() {
-    document.getElementById('codigoCliente').style.display = 'none';
+    document.getElementById('codigoCliente').classList.add('ocultar');
+    document.getElementById('codigoCliente').classList.remove('mostrar');
 }
 
-document.getElementById('si-tarjeta').addEventListener('change', gestionarCodigoCliente);
-document.getElementById('no-tarjeta').addEventListener('change', gestionarCodigoCliente);
+function comprobarEstadoInicial() {
+    var siTarjeta = document.getElementById('si-tarjeta');
+    var noTarjeta = document.getElementById('no-tarjeta');
+    
+    if (!siTarjeta.checked && !noTarjeta.checked) {
+        ocultarCodigoCliente();
+    }
+
+    if (siTarjeta.checked) {
+        mostrarCodigoCliente();
+    }
+
+    if (noTarjeta.checked) {
+        ocultarCodigoCliente();
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    asignarEventos();
+    comprobarEstadoInicial();
+});
 
 /* CAMBIOS PARA EL PUNTO 4.4 */
-/* function recuperarCamposFormulario() {
-    document.getElementById('formulario').addEventListener("submit", alertarCamposInvalidos());
+function recuperarInputs() {
+    let nombreInput = document.getElementById('nombre').value;
+    let apellidosInput = document.getElementById('apellidos').value;
+    let direccionInput = document.getElementById('direccion').value;
+    let correoInput = document.getElementById('correo').value;   
+    
+    let metodoPagoInput = document.querySelector('input[name="pago"]:checked');
+    metodoPagoInput = metodoPagoInput ? metodoPagoInput.value : null;
+
+    let tarjetaClienteInput = document.querySelector('input[name="tarjeta-cliente"]:checked');
+    tarjetaClienteInput = tarjetaClienteInput ? tarjetaClienteInput.value : null;
+
+    let codigoClienteInput = null;
+    if (tarjetaClienteInput === 'si') {
+        codigoClienteInput = document.getElementById('codigo').value;
+    }
+
 }
 
-function alertarCamposInvalidos() {
-    var camposObligatorios = document.querySelectorAll("input[required]");
-    if (!camposObligatorios.value) {
-        alert("Completa todos los cambos obligatorios");
-    } 
+function validarInput() {
+    let valido = true;
 
-} */
+    let nombrePattern = /^[a-zA-Z]{4,15}$/;
+    let correoPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let codigoPattern = /^[a-zA-Z]{3}\d{4}[\/\.#&]$/; 
+
+    if (!nombrePattern.test(nombreInput)) {
+        console.log("El nombre no es válido. Debe tener entre 4 y 15 letras.");
+        valido = false;
+    }
+
+    if (apellidosInput  === "") {
+        console.log("Los apellidos no pueden estar vacíos.");
+        valido = false;
+    }
+
+    if (direccionInput  === "") {
+        console.log("La dirección no puede estar vacía.");
+        valido = false;
+    }
+
+    if (!correoPattern.test(correoInput)) {
+        console.log("El correo electrónico no es válido.");
+        valido = false;
+    }
+
+    if (!metodoPagoInput) {
+        console.log("Debe seleccionar un método de pago.");
+        document.querySelector('input[name="pago"]').focus(); 
+        valido = false;
+    }
+
+    if (!tarjetaClienteInput) {
+        console.log("Debe indicar si tiene tarjeta de cliente.");
+        valido = false;
+    }
+
+    if (codigoClienteInput === 'si' && !codigoPattern.test(codigoClienteInput)) {
+        console.log("El código de cliente no es válido.");
+        valido = false;
+    }
+
+    return valido;
+}

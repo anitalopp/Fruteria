@@ -104,9 +104,9 @@
             </section>
         </div>  
         <div id="zonaInferior">
-            <form action="#" method="post" id="formulario"> <!-- revisar el # -->
+            <form action="#" method="post" id="formulario" novalidate> <!-- revisar el # -->
                 <label for="nombre">Nombre:</label><br>
-                <input type="text" id="nombre" name="nombre" required pattern="^[a-zA-Z]{4,15}$"><br>
+                <input type="text" id="nombre" name="nombre" required><br>
 
                 <label for="apellidos">Apellidos:</label><br>
                 <input type="text" id="apellidos" name="apellidos" required><br>
@@ -115,7 +115,7 @@
                 <input type="text" id="direccion" name="direccion" required><br>
 
                 <label for="correo">Correo electrónico:</label><br>
-                <input type="email" id="correo" name="correo" required pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"><br>
+                <input type="email" id="correo" name="correo" required><br>
 
                 <fieldset>
                     <label>Método de pago:</label><br>
@@ -132,9 +132,9 @@
                     <label for="no-tarjeta" id="no">No</label>
                     <input type="radio" id="no-tarjeta" name="tarjeta-cliente" value="no" required><br>
 
-                    <div id="codigoCliente">
+                    <div id="codigoCliente" class="ocultar">
                         <label for="codigo-cliente">Código Cliente:</label>
-                        <input type="text" id="codigo" required pattern="^[a-zA-Z]{3}\d{4}[\/\.#&]$"> 
+                        <input type="text" id="codigo" name="codigo" required> 
                     </div>
                 </fieldset>
 
