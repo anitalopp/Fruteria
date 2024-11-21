@@ -116,8 +116,7 @@ function reiniciarCompra() {
     carritoCompra.length = 0;
     dineroGastado = 0;
 
-    document.getElementById("resumenCompra").innerHTML = "";
-
+/*     document.getElementById("resumenCompra").innerHTML = "";*/
     compraFinalizada = false;
 
     const frutasAnadidas = document.getElementById('frutasAnadidas');
@@ -318,6 +317,8 @@ function abrirVentanaEmergente() {
 }
 
 function crearContenidoVentanaEmergente(ventana) {
+    ventana.document.addEventListener('DOMContentLoaded', function() {
+
     const body = ventana.document.createElement('body');
     ventana.document.body = body;
 
@@ -334,12 +335,14 @@ function crearContenidoVentanaEmergente(ventana) {
         volverAlPedido(ventana);
     });
     body.appendChild(botonVolver);
+});
 }
 
 function terminarPedido(ventana) {
-/*     ventana.close();*/
+    reiniciarCompra();
+    ventana.close();
 }
 
 function volverAlPedido(ventana) {
-/*     ventana.close();*/
+     ventana.close();
 }
