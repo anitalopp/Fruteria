@@ -16,7 +16,7 @@
                 <main>
                     <section class="contenedorFrutas">
                         <div class="fruta">
-                            <img id="1" onclick="agregarFruta(1)" src="../imagenes/pitahaya.jpeg" alt="Pitahaya">
+                            <img id="1" data-id="1" onclick="agregarFruta(1)" src="../imagenes/pitahaya.jpeg" alt="Pitahaya">
                             <div class="infoFruta">
                                 <span class="nombreFruta">Pitahaya</span>
                                 <span class="precioFruta">9.15 EUR/kg</span>
@@ -24,7 +24,7 @@
                             <input type="text" id="input-1" class="inputKilos" placeholder="kilos">
                         </div>
                         <div class="fruta">
-                            <img id="2" onclick="agregarFruta(2)" src="../imagenes/chirimoya.jpeg" alt="Chirimoya">
+                            <img id="2" data-id="2" onclick="agregarFruta(2)" src="../imagenes/chirimoya.jpeg" alt="Chirimoya">
                             <div class="infoFruta">
                                 <span class="nombreFruta">Chirimoya</span>
                                 <span class="precioFruta">8.60 EUR/kg</span>
@@ -32,7 +32,7 @@
                             <input type="text" id="input-2" class="inputKilos" placeholder="kilos">
                         </div>
                         <div class="fruta">
-                            <img id="3" onclick="agregarFruta(3)" src="../imagenes/longan.jpeg" alt="Longan">
+                            <img id="3" data-id="3" onclick="agregarFruta(3)" src="../imagenes/longan.jpeg" alt="Longan">
                             <div class="infoFruta">
                                 <span class="nombreFruta">Longan</span>
                                 <span class="precioFruta">7.42 EUR/kg</span>
@@ -40,7 +40,7 @@
                             <input type="text" id="input-3" class="inputKilos" placeholder="kilos">
                         </div>
                         <div class="fruta">
-                            <img id="4" onclick="agregarFruta(4)" src="../imagenes/carambola.jpeg" alt="Carambola">
+                            <img id="4" data-id="4" onclick="agregarFruta(4)" src="../imagenes/carambola.jpeg" alt="Carambola">
                             <div class="infoFruta">
                                 <span class="nombreFruta">Carambola</span>
                                 <span class="precioFruta">6.70 EUR/kg</span>
@@ -48,7 +48,7 @@
                             <input type="text" id="input-4" class="inputKilos" placeholder="kilos">
                         </div>
                         <div class="fruta">
-                            <img id="5" onclick="agregarFruta(5)" src="../imagenes/kiwano.jpeg" alt="Kiwano">
+                            <img id="5" data-id="5" onclick="agregarFruta(5)" src="../imagenes/kiwano.jpeg" alt="Kiwano">
                             <div class="infoFruta">
                                 <span class="nombreFruta">Kiwano</span>
                                 <span class="precioFruta">8.99 EUR/kg</span>
@@ -56,7 +56,7 @@
                             <input type="text" id="input-5" class="inputKilos" placeholder="kilos">
                         </div>
                         <div class="fruta">
-                            <img id="6" onclick="agregarFruta(6)" src="../imagenes/maracuya.jpeg" alt="Maracuyá">
+                            <img id="6" data-id="6" onclick="agregarFruta(6)" src="../imagenes/maracuya.jpeg" alt="Maracuyá">
                             <div class="infoFruta">
                                 <span class="nombreFruta">Maracuyá</span>
                                 <span class="precioFruta">5.22 EUR/kg</span>
@@ -64,7 +64,7 @@
                             <input type="text" id="input-6" class="inputKilos" placeholder="kilos">
                         </div>
                         <div class="fruta">
-                            <img id="7" onclick="agregarFruta(7)" src="../imagenes/lichi.jpeg" alt="Lichi">
+                            <img id="7" data-id="7" onclick="agregarFruta(7)" src="../imagenes/lichi.jpeg" alt="Lichi">
                             <div class="infoFruta">
                                 <span class="nombreFruta">Lichi</span>
                                 <span class="precioFruta">7.66 EUR/kg</span>
@@ -72,7 +72,7 @@
                             <input type="text" id="input-7" class="inputKilos" placeholder="kilos">
                         </div>
                         <div class="fruta">
-                            <img id="8" onclick="agregarFruta(8)" src="../imagenes/physalis.jpeg" alt="Physalis">
+                            <img id="8" data-id="8" onclick="agregarFruta(8)" src="../imagenes/physalis.jpeg" alt="Physalis">
                             <div class="infoFruta">
                                 <span class="nombreFruta">Physalis</span>
                                 <span class="precioFruta">10.32 EUR/kg</span>
@@ -80,7 +80,7 @@
                             <input type="text" id="input-8" class="inputKilos" placeholder="kilos">
                         </div>
                         <div class="fruta">
-                            <img id="9" onclick="agregarFruta(9)" src="../imagenes/kumquat.jpeg" alt="Kumquat">
+                            <img id="9" data-id="9" onclick="agregarFruta(9)" src="../imagenes/kumquat.jpeg" alt="Kumquat">
                             <div class="infoFruta">
                                 <span class="nombreFruta">Kumquat</span>
                                 <span class="precioFruta">8.20 EUR/kg</span>
@@ -88,7 +88,7 @@
                             <input type="text" id="input-9" class="inputKilos" placeholder="kilos">
                         </div>
                         <div class="fruta">
-                            <img id="10" onclick="agregarFruta(10)" src="../imagenes/pawpaw.jpeg" alt="PawPaw">
+                            <img id="10" data-id="10" onclick="agregarFruta(10)" src="../imagenes/pawpaw.jpeg" alt="PawPaw">
                             <div class="infoFruta">
                                 <span class="nombreFruta">PawPaw</span>
                                 <span class="precioFruta">10.66 EUR/kg</span>
@@ -96,7 +96,7 @@
                             <input type="text" id="input-10" class="inputKilos" placeholder="kilos">
                         </div>
                     </section>
-                </main>
+                </main>                
             </section>
             <section id="zonaLateral">
                 <h2>FRUTAS AÑADIDAS</h2>

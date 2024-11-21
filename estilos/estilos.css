@@ -130,7 +130,20 @@ form {
     display: none;
 }
 
-/* CAMBIOS PARA EL PUNTO 4.4.2 */
 .error-label {
     color: red;
 }
+
+.tooltip {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    max-width: 200px;
+    white-space: nowrap;
+    word-wrap: break-word;
+    white-space: normal; 
+}
+

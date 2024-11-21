@@ -11,6 +11,7 @@ function cargarFrutas() {
     })
     .then((data) => {
         listaFrutas = data;
+        asignarTooltips(); 
     })
     .catch();       
 }
@@ -158,7 +159,6 @@ function finalizarPedido() {
 /*     reiniciarCompraTimeout();*/
 }
 
-/* CAMBIOS PARA EL PUNTO 1.3.6 */
 function asignarEventos() {
     document.getElementById('si-tarjeta').addEventListener('change', gestionarCodigoCliente);
     document.getElementById('no-tarjeta').addEventListener('change', gestionarCodigoCliente);
@@ -203,7 +203,6 @@ function comprobarEstadoInicial() {
     }
 }
 
-/* CAMBIOS PARA EL PUNTO 4.4 */
 function recuperarInputs() {
     var inputs = {
       nombre: document.getElementById('nombre').value,
@@ -345,4 +344,47 @@ function terminarPedido(ventana) {
 
 function volverAlPedido(ventana) {
      ventana.close();
+}
+
+function asignarTooltips() {
+    const frutasImgs = document.querySelectorAll('.fruta img');  
+
+    frutasImgs.forEach(img => {
+        img.addEventListener('mouseover', function(event) {
+            const frutaId = event.target.getAttribute('data-id'); 
+            const fruta = buscarPorId(frutaId);  
+
+            if (fruta) {
+                const mensaje = obtenerMensajeTemporada(fruta); 
+                mostrarTooltip(event, mensaje);
+            }
+        });
+
+        img.addEventListener('mouseout', ocultarTooltip); 
+    });
+}
+
+function obtenerMensajeTemporada(fruta) {
+    if (fruta.temporada === 'verano') {
+        return `${fruta.nombre}: de verano, de proximidad: ${fruta.proximidad ? "sí" : "no"}, y están recogidas en ${fruta.region}`;
+    } else {
+        return `${fruta.nombre}: de invierno, recomendable refrigerar: ${fruta.refrigerar ? "sí" : "no"}`;
+    }
+}
+
+function mostrarTooltip(event, mensaje) {
+    const tooltip = document.createElement('div');
+    tooltip.classList.add('tooltip');
+    tooltip.innerText = mensaje;
+    document.body.appendChild(tooltip);
+
+    tooltip.style.left = `${event.pageX + 10}px`;
+    tooltip.style.top = `${event.pageY + 10}px`;
+}
+
+function ocultarTooltip() {
+    const tooltip = document.querySelector('.tooltip');
+    if (tooltip) {
+        tooltip.remove();
+    }
 }
