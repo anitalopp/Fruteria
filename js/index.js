@@ -311,12 +311,35 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-
 function abrirVentanaEmergente() {
-    let ventana = window.open("", "Ventana Emergente Frutería", "width=500, height= 300, toolbar=No, location=No"); /* añadir scroll si se necesita */
+    let ventana = window.open("", "Ventana Emergente Frutería", "width=500, height=300, toolbar=No, location=No");
 
-    ventana.document.write(obtenerMensajeTemporada());
-    
-    return ventana;
+    crearContenidoVentanaEmergente(ventana);
 }
 
+function crearContenidoVentanaEmergente(ventana) {
+    const body = ventana.document.createElement('body');
+    ventana.document.body = body;
+
+    const botonTerminar = ventana.document.createElement('button');
+    botonTerminar.textContent = 'Terminar Pedido';
+    botonTerminar.addEventListener('click', function() {
+        terminarPedido(ventana);
+    });
+    body.appendChild(botonTerminar);
+
+    const botonVolver = ventana.document.createElement('button');
+    botonVolver.textContent = 'Volver';
+    botonVolver.addEventListener('click', function() {
+        volverAlPedido(ventana);
+    });
+    body.appendChild(botonVolver);
+}
+
+function terminarPedido(ventana) {
+/*     ventana.close();*/
+}
+
+function volverAlPedido(ventana) {
+/*     ventana.close();*/
+}
