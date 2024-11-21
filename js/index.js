@@ -124,24 +124,16 @@ function reiniciarCompra() {
     frutasAnadidas.innerHTML = '';
 }
 
-function reiniciarCompraTimeout() {
+/* function reiniciarCompraTimeout() {
     let ventanaEmergente = abrirVentanaEmergente();
 
     setTimeout(() => {
         reiniciarCompra();
         ventanaEmergente.close();
     }, 10000); 
-}
+} */
 
-function abrirVentanaEmergente() {
-    let ventana = window.open("", "Ventana Emergente Frutería", "width=600, height= 600, menubar=No, scrollbar=No");
-
-    ventana.document.write(obtenerMensajeTemporada());
-    
-    return ventana;
-}
-
-function obtenerMensajeTemporada() {
+/* function obtenerMensajeTemporada() {
     let mensaje = "";
 
     carritoCompra.forEach(m => {
@@ -153,7 +145,7 @@ function obtenerMensajeTemporada() {
         }
     })    
     return mensaje;
-}
+} */
 
 function finalizarPedido() {
     carritoCompra.sort((a, b) => b.nombre.localeCompare(a.nombre));
@@ -164,7 +156,7 @@ function finalizarPedido() {
 
     enviarPedido(`${fechaFormateada} ${horaFormateada}`);
     mostrarResumen(`${fechaFormateada} ${horaFormateada}`);
-    reiniciarCompraTimeout();
+/*     reiniciarCompraTimeout();*/
 }
 
 /* CAMBIOS PARA EL PUNTO 1.3.6 */
@@ -240,6 +232,11 @@ function recuperarInputs() {
 function validarInputs(inputs) {
     var valido = true;
 
+    var labels = document.querySelectorAll('label');
+    labels.forEach(function(label) {
+        label.classList.remove('error-label');
+    });
+
     var nombrePattern = /^[a-zA-Z]{4,15}$/;
     var correoPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     var codigoPattern = /^[a-zA-Z]{3}\d{4}[\/\.#&]$/;
@@ -272,9 +269,9 @@ function validarInputs(inputs) {
         valido = false;
     }
 
-    if (!inputs.pago) {
+    if (!inputs.metodoPago) {
         console.log("Debe seleccionar un método de pago.");
-        var labelMetodoPago = document.querySelector('label[for="tarjeta"]');
+        var labelMetodoPago = document.querySelector('label[for="pago"]');
         if (labelMetodoPago) labelMetodoPago.classList.add('error-label');
         valido = false;
     }
@@ -303,13 +300,23 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('formulario').addEventListener('submit', function(event) {
         event.preventDefault(); 
 
-        var inputs = recuperarInputs(); 
+        var inputs = recuperarInputs();
         var esValido = validarInputs(inputs); 
 
         if (esValido) {
-          this.submit(); 
+            abrirVentanaEmergente();
         } else {
-          alert("Hay datos incorrectos en el formulario");
+            alert("Hay datos incorrectos en el formulario"); 
         }
     });
 });
+
+
+function abrirVentanaEmergente() {
+    let ventana = window.open("", "Ventana Emergente Frutería", "width=500, height= 300, toolbar=No, location=No"); /* añadir scroll si se necesita */
+
+    ventana.document.write(obtenerMensajeTemporada());
+    
+    return ventana;
+}
+
