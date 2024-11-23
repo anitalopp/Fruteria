@@ -296,15 +296,15 @@ document.addEventListener('DOMContentLoaded', function() {
     comprobarEstadoInicial();
 
     document.getElementById('formulario').addEventListener('submit', function(event) {
-        event.preventDefault(); 
+        event.preventDefault();
 
         var inputs = recuperarInputs();
-        var esValido = validarInputs(inputs); 
+        var esValido = validarInputs(inputs);
 
         if (esValido) {
             abrirVentanaEmergente();
         } else {
-            alert("Hay datos incorrectos en el formulario"); 
+            alert("Hay datos incorrectos en el formulario");
         }
     });
 });
@@ -316,26 +316,25 @@ function abrirVentanaEmergente() {
 }
 
 function crearContenidoVentanaEmergente(ventana) {
-    ventana.document.addEventListener('DOMContentLoaded', function() {
-
-    const body = ventana.document.createElement('body');
-    ventana.document.body = body;
+    ventana.document.body.innerHTML = "";
 
     const botonTerminar = ventana.document.createElement('button');
     botonTerminar.textContent = 'Terminar Pedido';
+    botonTerminar.classList.add('boton-estilo');
     botonTerminar.addEventListener('click', function() {
         terminarPedido(ventana);
     });
-    body.appendChild(botonTerminar);
 
     const botonVolver = ventana.document.createElement('button');
     botonVolver.textContent = 'Volver';
     botonVolver.addEventListener('click', function() {
         volverAlPedido(ventana);
     });
-    body.appendChild(botonVolver);
-});
+
+    ventana.document.body.appendChild(botonTerminar);
+    ventana.document.body.appendChild(botonVolver);
 }
+
 
 function terminarPedido(ventana) {
     reiniciarCompra();
@@ -343,8 +342,9 @@ function terminarPedido(ventana) {
 }
 
 function volverAlPedido(ventana) {
-     ventana.close();
+    ventana.close();
 }
+
 
 function asignarTooltips() {
     const frutasImgs = document.querySelectorAll('.fruta img');  
