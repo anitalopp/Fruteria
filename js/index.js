@@ -295,6 +295,7 @@ function terminarPedido(ventana) {
 
     enviarPedido(`${fechaFormateada} ${horaFormateada}`);
     reiniciarCompra(); 
+    reiniciarFormulario(); 
     ventana.close();
 }
 
@@ -325,7 +326,28 @@ function reiniciarCompra() {
 
     const frutasAnadidas = document.getElementById('frutasAnadidas');
     frutasAnadidas.innerHTML = '';
+
+    const inputsCantidad = document.querySelectorAll('[id^="input-"]');
+    inputsCantidad.forEach(input => {
+    input.value = ''; 
+    });
 }
+
+function reiniciarFormulario() {
+    const formulario = document.getElementById('formulario');
+    formulario.reset();
+
+    ocultarCodigoCliente();
+
+    const codigoCliente = document.getElementById('codigo');
+    if (codigoCliente) {
+        codigoCliente.value = '';
+    }
+
+    const labels = document.querySelectorAll('label');
+    labels.forEach(label => label.classList.remove('error-label'));
+}
+
 
 function asignarTooltips() {
     const frutasImgs = document.querySelectorAll('.fruta img');  
