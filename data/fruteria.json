@@ -83,6 +83,30 @@
       "id": "39cf",
       "fecha": "16/11/2024 15:30",
       "productos": []
+    },
+    {
+      "id": "cdc0",
+      "fecha": "23/11/2024 14:00",
+      "productos": [
+        {
+          "id": "1",
+          "nombre": "pitahaya",
+          "numKilos": 2,
+          "importeTotal": 18.3
+        },
+        {
+          "id": "2",
+          "nombre": "chirimoya",
+          "numKilos": 3,
+          "importeTotal": 25.799999999999997
+        },
+        {
+          "id": "3",
+          "nombre": "longan",
+          "numKilos": 4,
+          "importeTotal": 29.68
+        }
+      ]
     }
   ]
 }

@@ -97,32 +97,7 @@ function aplicarEstilos(zonaLateral, fruta) {
     compraFinalizada = true;
 } */
 
-function enviarPedido(fecha)  {
-    let pedido = {
-        "fecha": fecha, 
-        "productos": carritoCompra,
-    }
-    fetch("http://localhost:3000/pedidos", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(pedido)
-    })
-    .then(response => response.json())
-    .catch();    
-}
 
-function reiniciarCompra() {
-    carritoCompra.length = 0;
-    dineroGastado = 0;
-
-/*     document.getElementById("resumenCompra").innerHTML = "";*/
-    compraFinalizada = false;
-
-    const frutasAnadidas = document.getElementById('frutasAnadidas');
-    frutasAnadidas.innerHTML = '';
-}
 
 /* function reiniciarCompraTimeout() {
     let ventanaEmergente = abrirVentanaEmergente();
@@ -336,8 +311,18 @@ function crearContenidoVentanaEmergente(ventana) {
 }
 
 
-function terminarPedido(ventana) {
+/* function terminarPedido(ventana) {
     reiniciarCompra();
+    ventana.close();
+} */
+
+function terminarPedido(ventana) {
+    const fechaPedido = new Date();
+    const fechaFormateada = fechaPedido.toLocaleDateString("es-ES");
+    const horaFormateada = fechaPedido.toLocaleTimeString("es-ES", { hour: '2-digit', minute: '2-digit' });
+
+    enviarPedido(`${fechaFormateada} ${horaFormateada}`);
+    reiniciarCompra(); 
     ventana.close();
 }
 
@@ -345,6 +330,31 @@ function volverAlPedido(ventana) {
     ventana.close();
 }
 
+function enviarPedido(fecha)  {
+    let pedido = {
+        "fecha": fecha, 
+        "productos": carritoCompra,
+    }
+    fetch("http://localhost:3000/pedidos", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(pedido)
+    })
+    .then(response => response.json())
+    .catch(error => console.error("Error al enviar el pedido:", error));
+}
+
+function reiniciarCompra() {
+    carritoCompra.length = 0;
+    dineroGastado = 0;
+/*     document.getElementById("resumenCompra").innerHTML = "";*/
+    compraFinalizada = false;
+
+    const frutasAnadidas = document.getElementById('frutasAnadidas');
+    frutasAnadidas.innerHTML = '';
+}
 
 function asignarTooltips() {
     const frutasImgs = document.querySelectorAll('.fruta img');  
