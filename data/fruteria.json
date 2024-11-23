@@ -80,31 +80,79 @@
   ],
   "pedidos": [
     {
-      "id": "39cf",
-      "fecha": "16/11/2024 15:30",
+      "id": "d640",
+      "fecha": "23/11/2024 19:24",
+      "productos": [
+        {
+          "id": "1",
+          "nombre": "pitahaya",
+          "numKilos": 9,
+          "importeTotal": 82.35000000000001
+        },
+        {
+          "id": "4",
+          "nombre": "carambola",
+          "numKilos": 6,
+          "importeTotal": 40.2
+        },
+        {
+          "id": "6",
+          "nombre": "maracuya",
+          "numKilos": 300,
+          "importeTotal": 1566
+        },
+        {
+          "id": "8",
+          "nombre": "physalis",
+          "numKilos": 2,
+          "importeTotal": 20.64
+        }
+      ]
+    },
+    {
+      "id": "bc5f",
+      "fecha": "23/11/2024 19:24",
       "productos": []
     },
     {
-      "id": "cdc0",
-      "fecha": "23/11/2024 14:00",
+      "id": "2520",
+      "fecha": "23/11/2024 19:24",
+      "productos": []
+    },
+    {
+      "id": "2fb0",
+      "fecha": "23/11/2024 19:24",
+      "productos": []
+    },
+    {
+      "id": "e08b",
+      "fecha": "23/11/2024 19:24",
+      "productos": []
+    },
+    {
+      "id": "a600",
+      "fecha": "23/11/2024 19:24",
+      "productos": []
+    },
+    {
+      "id": "5a6c",
+      "fecha": "23/11/2024 19:24",
+      "productos": []
+    },
+    {
+      "id": "5294",
+      "fecha": "23/11/2024 19:24",
+      "productos": []
+    },
+    {
+      "id": "2d31",
+      "fecha": "23/11/2024 19:28",
       "productos": [
         {
           "id": "1",
           "nombre": "pitahaya",
           "numKilos": 2,
           "importeTotal": 18.3
-        },
-        {
-          "id": "2",
-          "nombre": "chirimoya",
-          "numKilos": 3,
-          "importeTotal": 25.799999999999997
-        },
-        {
-          "id": "3",
-          "nombre": "longan",
-          "numKilos": 4,
-          "importeTotal": 29.68
         }
       ]
     }

@@ -78,50 +78,6 @@ function aplicarEstilos(zonaLateral, fruta) {
     })
 }
 
-/* function mostrarResumen(fecha) {
-    const resumenCompra = document.getElementById("resumenCompra");
-    let totalPrecio = "Precio total: " + compraTotal.toFixed(2) + " €";
-    let precioMedioCalculado = compraTotal / (totalKilosPedido != 0 ? totalKilosPedido : 1);
-    let precioMedio = "Precio medio: " + precioMedioCalculado.toFixed(2) + " €/kg";
-    let contenidoResumen = "";
-
-    carritoCompra.forEach(fruta => {
-        contenidoResumen += `${fruta.nombre} ---- ${fruta.numKilos} kg --- ${fruta.numKilos * buscarPorId(fruta.id).precioKilo}€ <br> `;
-    });
-    
-    resumenCompra.innerHTML = `Fecha de compra: ${fecha}`;
-    resumenCompra.innerHTML += `<br>${contenidoResumen}`;
-    resumenCompra.innerHTML +=  `<br>${totalPrecio}`;
-    resumenCompra.innerHTML += `<br>${precioMedio}`;
-
-    compraFinalizada = true;
-} */
-
-
-
-/* function reiniciarCompraTimeout() {
-    let ventanaEmergente = abrirVentanaEmergente();
-
-    setTimeout(() => {
-        reiniciarCompra();
-        ventanaEmergente.close();
-    }, 10000); 
-} */
-
-/* function obtenerMensajeTemporada() {
-    let mensaje = "";
-
-    carritoCompra.forEach(m => {
-        let fruta = buscarPorId(m.id);
-        if (fruta.temporada == "verano") {
-            mensaje += `${fruta.nombre}: de verano, de proximidad: ${fruta.proximidad ? "si " : "no "}, y están recogidas en ${fruta.region}<br>`;
-        } else {
-            mensaje += `${fruta.nombre}: de invierno, recomendable refrigerar: ${fruta.refrigerar ? "si <br>" : "no <br>"}`;
-        }
-    })    
-    return mensaje;
-} */
-
 function finalizarPedido() {
     carritoCompra.sort((a, b) => b.nombre.localeCompare(a.nombre));
 
@@ -131,7 +87,6 @@ function finalizarPedido() {
 
     enviarPedido(`${fechaFormateada} ${horaFormateada}`);
     mostrarResumen(`${fechaFormateada} ${horaFormateada}`);
-/*     reiniciarCompraTimeout();*/
 }
 
 function asignarEventos() {
@@ -293,6 +248,9 @@ function abrirVentanaEmergente() {
 function crearContenidoVentanaEmergente(ventana) {
     ventana.document.body.innerHTML = "";
 
+    const contenedorResumen = ventana.document.createElement('div');
+    contenedorResumen.id = 'contenedorResumen';
+
     const botonTerminar = ventana.document.createElement('button');
     botonTerminar.textContent = 'Terminar Pedido';
     botonTerminar.classList.add('boton-estilo');
@@ -306,15 +264,29 @@ function crearContenidoVentanaEmergente(ventana) {
         volverAlPedido(ventana);
     });
 
+    ventana.document.body.appendChild(contenedorResumen);
     ventana.document.body.appendChild(botonTerminar);
     ventana.document.body.appendChild(botonVolver);
+
+    mostrarResumenEnVentana(ventana);
 }
 
+function mostrarResumenEnVentana(ventana) {
+    const resumenCompra = ventana.document.getElementById('contenedorResumen');
+    let totalPrecio = "Precio total: " + compraTotal.toFixed(2) + " €";
+    let precioMedioCalculado = compraTotal / (totalKilosPedido != 0 ? totalKilosPedido : 1);
+    let precioMedio = "Precio medio: " + precioMedioCalculado.toFixed(2) + " €/kg";
+    let contenidoResumen = "";
 
-/* function terminarPedido(ventana) {
-    reiniciarCompra();
-    ventana.close();
-} */
+    carritoCompra.forEach(fruta => {
+        contenidoResumen += `${fruta.nombre} ---- ${fruta.numKilos} kg --- ${fruta.numKilos * buscarPorId(fruta.id).precioKilo}€ <br> `;
+    });
+
+    resumenCompra.innerHTML = `<strong>Resumen del pedido:</strong><br>`;
+    resumenCompra.innerHTML += contenidoResumen;
+    resumenCompra.innerHTML += `<br>${totalPrecio}`;
+    resumenCompra.innerHTML += `<br>${precioMedio}`;
+}
 
 function terminarPedido(ventana) {
     const fechaPedido = new Date();
@@ -349,7 +321,6 @@ function enviarPedido(fecha)  {
 function reiniciarCompra() {
     carritoCompra.length = 0;
     dineroGastado = 0;
-/*     document.getElementById("resumenCompra").innerHTML = "";*/
     compraFinalizada = false;
 
     const frutasAnadidas = document.getElementById('frutasAnadidas');
